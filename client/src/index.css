@@ -1,3 +1,10 @@
+/* ============================================================
+   DESIGN SYSTEM — "Precision Dark — Editorial Tech"
+   Paleta: Preto Grafite #0A0A0A | Cinza Carvão #1C1C1E | Azul Neon #00D4FF
+   Tipografia: Poppins (300/400/600/700/900) + JetBrains Mono
+   Filosofia: Editorial minimalismo suíço adaptado ao dark digital
+   ============================================================ */
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -27,132 +34,100 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+  --color-neon: var(--neon);
 }
 
 :root {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-600);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-  --radius: 0.65rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.235 0.015 65);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.235 0.015 65);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.235 0.015 65);
-  --secondary: oklch(0.98 0.001 286.375);
-  --secondary-foreground: oklch(0.4 0.015 65);
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.141 0.005 285.823);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.92 0.004 286.32);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.623 0.214 259.815);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.235 0.015 65);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.623 0.214 259.815);
-}
-
-.dark {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-500);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --background: oklch(0.141 0.005 285.823);
-  --foreground: oklch(0.85 0.005 65);
-  --card: oklch(0.21 0.006 285.885);
-  --card-foreground: oklch(0.85 0.005 65);
-  --popover: oklch(0.21 0.006 285.885);
-  --popover-foreground: oklch(0.85 0.005 65);
-  --secondary: oklch(0.24 0.006 286.033);
-  --secondary-foreground: oklch(0.7 0.005 65);
-  --muted: oklch(0.274 0.006 286.033);
-  --muted-foreground: oklch(0.705 0.015 286.067);
-  --accent: oklch(0.274 0.006 286.033);
-  --accent-foreground:  oklch(0.92 0.005 65);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.488 0.243 264.376);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-  --sidebar: oklch(0.21 0.006 285.885);
-  --sidebar-foreground: oklch(0.85 0.005 65);
-  --sidebar-accent: oklch(0.274 0.006 286.033);
-  --sidebar-accent-foreground:  oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.488 0.243 264.376);
+  --radius: 0.375rem;
+  /* Preto grafite puro */
+  --background: oklch(0.07 0 0);
+  /* Branco suave para texto */
+  --foreground: oklch(0.93 0.005 240);
+  /* Cinza carvão para cards */
+  --card: oklch(0.12 0.003 240);
+  --card-foreground: oklch(0.93 0.005 240);
+  --popover: oklch(0.12 0.003 240);
+  --popover-foreground: oklch(0.93 0.005 240);
+  /* Azul neon como primário */
+  --primary: oklch(0.78 0.18 210);
+  --primary-foreground: oklch(0.07 0 0);
+  --secondary: oklch(0.15 0.003 240);
+  --secondary-foreground: oklch(0.75 0.01 240);
+  --muted: oklch(0.17 0.003 240);
+  --muted-foreground: oklch(0.55 0.01 240);
+  --accent: oklch(0.78 0.18 210);
+  --accent-foreground: oklch(0.07 0 0);
+  --destructive: oklch(0.65 0.22 25);
+  --destructive-foreground: oklch(0.93 0 0);
+  --border: oklch(0.22 0.004 240);
+  --input: oklch(0.15 0.003 240);
+  --ring: oklch(0.78 0.18 210);
+  /* Azul neon personalizado */
+  --neon: #00D4FF;
+  --neon-glow: rgba(0, 212, 255, 0.15);
+  --neon-glow-strong: rgba(0, 212, 255, 0.3);
+  /* Cinzas da paleta */
+  --graphite: #0A0A0A;
+  --charcoal: #1C1C1E;
+  --charcoal-mid: #2A2A2E;
+  --charcoal-light: #3A3A3C;
+  --gray-text: #8E8E93;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    box-sizing: border-box;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--graphite);
+    color: oklch(0.93 0.005 240);
+    overflow-x: hidden;
   }
+
+  ::selection {
+    background-color: var(--neon-glow-strong);
+    color: var(--neon);
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--graphite);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--charcoal-light);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--neon);
+  }
+
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
-  [type="button"]:not(:disabled),
-  [type="submit"]:not(:disabled),
-  [type="reset"]:not(:disabled),
-  a[href],
-  select:not(:disabled),
-  input[type="checkbox"]:not(:disabled),
-  input[type="radio"]:not(:disabled) {
+  a[href] {
     @apply cursor-pointer;
   }
 }
 
 @layer components {
-  /**
-   * Custom container utility that centers content and adds responsive padding.
-   *
-   * This overrides Tailwind's default container behavior to:
-   * - Auto-center content (mx-auto)
-   * - Add responsive horizontal padding
-   * - Set max-width for large screens
-   *
-   * Usage: <div className="container">...</div>
-   *
-   * For custom widths, use max-w-* utilities directly:
-   * <div className="max-w-6xl mx-auto px-4">...</div>
-   */
   .container {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1rem; /* 16px - mobile padding */
-    padding-right: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
   .flex {
@@ -162,16 +137,268 @@
 
   @media (min-width: 640px) {
     .container {
-      padding-left: 1.5rem; /* 24px - tablet padding */
-      padding-right: 1.5rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
     }
   }
 
   @media (min-width: 1024px) {
     .container {
-      padding-left: 2rem; /* 32px - desktop padding */
-      padding-right: 2rem;
-      max-width: 1280px; /* Standard content width */
+      padding-left: 4rem;
+      padding-right: 4rem;
+      max-width: 1320px;
     }
   }
+
+  /* Neon text glow */
+  .neon-text {
+    color: var(--neon);
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5), 0 0 30px rgba(0, 212, 255, 0.2);
+  }
+
+  /* Neon border */
+  .neon-border {
+    border: 1px solid var(--neon);
+    box-shadow: 0 0 10px var(--neon-glow), inset 0 0 10px var(--neon-glow);
+  }
+
+  /* Section number style */
+  .section-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--neon);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* Section title */
+  .section-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    color: oklch(0.93 0.005 240);
+    line-height: 1.15;
+  }
+
+  /* Card dark */
+  .card-dark {
+    background: var(--charcoal);
+    border: 1px solid var(--charcoal-light);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .card-dark:hover {
+    border-color: var(--neon);
+    box-shadow: 0 0 20px var(--neon-glow), 0 8px 32px rgba(0,0,0,0.4);
+    transform: translateY(-4px);
+  }
+
+  /* Skill bar */
+  .skill-bar-track {
+    background: var(--charcoal-light);
+    height: 4px;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .skill-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--neon), rgba(0, 212, 255, 0.6));
+    border-radius: 2px;
+    transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 8px var(--neon-glow-strong);
+  }
+
+  /* Tech tag */
+  .tech-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    border: 1px solid var(--charcoal-light);
+    color: var(--neon);
+    border-radius: 3px;
+    background: rgba(0, 212, 255, 0.05);
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .tech-tag:hover {
+    border-color: var(--neon);
+    background: rgba(0, 212, 255, 0.1);
+  }
+
+  /* Vertical neon line */
+  .neon-line-v {
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--neon), transparent);
+    box-shadow: 0 0 8px var(--neon-glow-strong);
+  }
+
+  /* Horizontal neon line */
+  .neon-line-h {
+    height: 1px;
+    background: linear-gradient(to right, var(--neon), transparent);
+    box-shadow: 0 0 6px var(--neon-glow);
+  }
+
+  /* Button neon primary */
+  .btn-neon {
+    background: transparent;
+    border: 1px solid var(--neon);
+    color: var(--neon);
+    padding: 0.65rem 1.75rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-neon::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--neon);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+    z-index: -1;
+  }
+
+  .btn-neon:hover {
+    color: var(--graphite);
+    box-shadow: 0 0 20px var(--neon-glow-strong);
+  }
+
+  .btn-neon:hover::before {
+    transform: scaleX(1);
+  }
+
+  /* Button solid */
+  .btn-solid {
+    background: var(--neon);
+    border: 1px solid var(--neon);
+    color: var(--graphite);
+    padding: 0.65rem 1.75rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+
+  .btn-solid:hover {
+    background: transparent;
+    color: var(--neon);
+    box-shadow: 0 0 20px var(--neon-glow-strong);
+  }
+
+  /* Animate on scroll */
+  .animate-fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .animate-fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .animate-fade-in {
+    opacity: 0;
+    transition: opacity 0.7s ease;
+  }
+
+  .animate-fade-in.visible {
+    opacity: 1;
+  }
+
+  /* Delay utilities */
+  .delay-100 { transition-delay: 0.1s; }
+  .delay-200 { transition-delay: 0.2s; }
+  .delay-300 { transition-delay: 0.3s; }
+  .delay-400 { transition-delay: 0.4s; }
+  .delay-500 { transition-delay: 0.5s; }
+  .delay-600 { transition-delay: 0.6s; }
+}
+
+/* Typewriter cursor animation */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+  color: var(--neon);
+}
+
+/* Neon pulse animation */
+@keyframes neon-pulse {
+  0%, 100% { box-shadow: 0 0 5px var(--neon-glow), 0 0 10px var(--neon-glow); }
+  50% { box-shadow: 0 0 15px var(--neon-glow-strong), 0 0 30px var(--neon-glow); }
+}
+
+.neon-pulse {
+  animation: neon-pulse 2.5s ease-in-out infinite;
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.float-anim {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Slide in from left */
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Glow border animation */
+@keyframes glow-border {
+  0%, 100% { border-color: rgba(0, 212, 255, 0.2); }
+  50% { border-color: rgba(0, 212, 255, 0.6); }
+}
+
+.glow-border-anim {
+  animation: glow-border 3s ease-in-out infinite;
+}
+
+/* Progress bar shimmer */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.skill-bar-fill {
+  background: linear-gradient(90deg, var(--neon) 0%, rgba(0,212,255,0.4) 50%, var(--neon) 100%);
+  background-size: 200% auto;
+}
+
+.skill-bar-fill.animated {
+  animation: shimmer 3s linear infinite;
+}
+
+/* Grid noise texture overlay */
+.noise-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
 }
