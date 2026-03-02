@@ -145,10 +145,10 @@ export default function HeroSection() {
             <span
               style={{
                 color: "var(--neon)",
-                textShadow: "0 0 30px rgba(0, 212, 255, 0.4)",
+                textShadow: "0 0 30px rgba(0, 212, 255, 0.4)", fontFamily: "'Monoton', cursive",
               }}
             >
-              Profissional.
+              SANTOS
             </span>
           </h1>
 
