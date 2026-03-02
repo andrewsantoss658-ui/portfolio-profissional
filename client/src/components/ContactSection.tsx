@@ -10,32 +10,32 @@ const socialLinks = [
   {
     name: "GitHub",
     icon: Github,
-    url: "https://github.com/seuusuario",
-    handle: "@seuusuario",
+    url: "https://github.com/andrewsantoss658-ui",
+    handle: "andrewsantoss658-ui",
     color: "#E5E7EB",
     desc: "Veja meus repositórios e contribuições",
   },
   {
     name: "LinkedIn",
     icon: Linkedin,
-    url: "https://linkedin.com/in/seuusuario",
-    handle: "linkedin.com/in/seuusuario",
+    url: "https://www.linkedin.com/in/andrew-santoss/",
+    handle: "andrew-santoss",
     color: "#0A66C2",
     desc: "Conecte-se profissionalmente comigo",
   },
   {
     name: "WhatsApp",
     icon: MessageCircle,
-    url: "https://wa.me/5511999999999",
-    handle: "+55 (11) 99999-9999",
+    url: "https://wa.me/5571997383026",
+    handle: "+55 (71) 99738-3026",
     color: "#25D366",
     desc: "Mensagem direta e rápida",
   },
   {
     name: "E-mail",
     icon: Mail,
-    url: "mailto:seuemail@email.com",
-    handle: "seuemail@email.com",
+    url: "mailto:andrew.santoss@outlook.com",
+    handle: "andrew.santoss@outlook.com",
     color: "#00D4FF",
     desc: "Para propostas e oportunidades formais",
   },
@@ -118,7 +118,7 @@ export default function ContactSection() {
               className="text-sm font-light mb-6"
               style={{ color: "var(--gray-text)" }}
             >
-              Estou disponível para projetos freelance, oportunidades de emprego
+              Estou disponível para projetos freelance, oportunidades de estágio, emprego
               e colaborações. Respondo em até 24 horas.
             </p>
 
@@ -134,7 +134,7 @@ export default function ContactSection() {
                     className="flex items-center gap-4 p-4 rounded-xl transition-all duration-300 group"
                     style={{
                       background: "var(--charcoal)",
-                      border: "1px solid var(--charcoal-light)",
+                      border: "1px solid var(--charcoal-light)", fontSize: '14px',
                     }}
                     onMouseEnter={(e) => {
                       (e.currentTarget as HTMLElement).style.borderColor = `${social.color}50`;
@@ -208,7 +208,7 @@ export default function ContactSection() {
                   className="text-sm font-medium"
                   style={{ color: "oklch(0.85 0.005 240)" }}
                 >
-                  Brasil — Remoto disponível
+                  Salvador, Bahia - Brasil
                 </div>
               </div>
             </div>

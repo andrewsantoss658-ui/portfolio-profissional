@@ -13,10 +13,10 @@ const quickLinks = [
 ];
 
 const socials = [
-  { icon: Github, href: "https://github.com/seuusuario", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com/in/seuusuario", label: "LinkedIn" },
-  { icon: MessageCircle, href: "https://wa.me/5511999999999", label: "WhatsApp" },
-  { icon: Mail, href: "mailto:seuemail@email.com", label: "Email" },
+  { icon: Github, href: "https://github.com/andrewsantoss658-ui", label: "GitHub" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/andrew-santoss/", label: "LinkedIn" },
+  { icon: MessageCircle, href: "https://wa.me/5571997383026", label: "WhatsApp" },
+  { icon: Mail, href: "mailto:andrew.santoss@outlook.com", label: "Email" },
 ];
 
 export default function Footer() {
