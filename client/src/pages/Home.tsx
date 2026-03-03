@@ -10,6 +10,7 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import ProjectsSection from "@/components/ProjectsSection";
+import VisualEffectsSection from "@/components/VisualEffectsSection";
 import SkillsSection from "@/components/SkillsSection";
 import CertificatesSection from "@/components/CertificatesSection";
 import ContactSection from "@/components/ContactSection";
@@ -62,6 +63,7 @@ export default function Home() {
         <HeroSection />
         <AboutSection />
         <ProjectsSection />
+        <VisualEffectsSection />
         <SkillsSection />
         <CertificatesSection />
         <ContactSection />
