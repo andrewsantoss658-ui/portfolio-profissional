@@ -14,7 +14,7 @@ const infoItems = [
   },
   {
     label: "Especialização Desejada",
-    value: "Estudante de tecnologia",
+    value: "Análise de Dados",
     icon: "⚡",
   },
   {
