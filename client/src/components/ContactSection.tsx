@@ -111,9 +111,9 @@ export default function ContactSection() {
           />
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-12">
-          {/* Left: Social links — 2 cols */}
-          <div className="lg:col-span-2 animate-fade-up delay-100">
+        <div className="grid lg:grid-cols-1 gap-12">
+          {/* Left: Social links — Full width */}
+          <div className="animate-fade-up delay-100">
             <p
               className="text-sm font-light mb-6"
               style={{ color: "var(--gray-text)" }}
@@ -214,133 +214,7 @@ export default function ContactSection() {
             </div>
           </div>
 
-          {/* Right: Contact form — 3 cols */}
-          <div className="lg:col-span-3 animate-fade-up delay-200">
-            <div
-              className="p-8 rounded-2xl"
-              style={{
-                background: "var(--charcoal)",
-                border: "1px solid var(--charcoal-light)",
-              }}
-            >
-              <div className="flex items-center gap-2 mb-6">
-                <span
-                  className="text-xs font-mono"
-                  style={{ color: "var(--neon)" }}
-                >
-                  &gt;_ Enviar Mensagem
-                </span>
-              </div>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label
-                      className="block text-xs font-mono mb-2"
-                      style={{ color: "var(--gray-text)" }}
-                    >
-                      nome
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={form.name}
-                      onChange={handleChange}
-                      placeholder="Seu nome"
-                      required
-                      style={inputBase}
-                      onFocus={handleFocus}
-                      onBlur={handleBlur}
-                    />
-                  </div>
-                  <div>
-                    <label
-                      className="block text-xs font-mono mb-2"
-                      style={{ color: "var(--gray-text)" }}
-                    >
-                      email
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={form.email}
-                      onChange={handleChange}
-                      placeholder="seu@email.com"
-                      required
-                      style={inputBase}
-                      onFocus={handleFocus}
-                      onBlur={handleBlur}
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label
-                    className="block text-xs font-mono mb-2"
-                    style={{ color: "var(--gray-text)" }}
-                  >
-                    assunto
-                  </label>
-                  <input
-                    type="text"
-                    name="subject"
-                    value={form.subject}
-                    onChange={handleChange}
-                    placeholder="Sobre o que você quer falar?"
-                    required
-                    style={inputBase}
-                    onFocus={handleFocus}
-                    onBlur={handleBlur}
-                  />
-                </div>
-
-                <div>
-                  <label
-                    className="block text-xs font-mono mb-2"
-                    style={{ color: "var(--gray-text)" }}
-                  >
-                    mensagem
-                  </label>
-                  <textarea
-                    name="message"
-                    value={form.message}
-                    onChange={handleChange}
-                    placeholder="Escreva sua mensagem aqui..."
-                    required
-                    rows={5}
-                    style={{ ...inputBase, resize: "vertical" }}
-                    onFocus={handleFocus}
-                    onBlur={handleBlur}
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={loading || sent}
-                  className="btn-solid w-full flex items-center justify-center gap-2 mt-2"
-                  style={{
-                    opacity: loading ? 0.8 : 1,
-                    background: sent ? "#10B981" : "var(--neon)",
-                    borderColor: sent ? "#10B981" : "var(--neon)",
-                  }}
-                >
-                  {loading ? (
-                    <>
-                      <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
-                      Enviando...
-                    </>
-                  ) : sent ? (
-                    <>✓ Mensagem Enviada com Sucesso!</>
-                  ) : (
-                    <>
-                      <Send size={14} />
-                      Enviar Mensagem
-                    </>
-                  )}
-                </button>
-              </form>
-            </div>
-          </div>
         </div>
       </div>
     </section>

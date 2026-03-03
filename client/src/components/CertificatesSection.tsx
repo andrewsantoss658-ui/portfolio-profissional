@@ -134,7 +134,6 @@ export default function CertificatesSection() {
         >
           {[
             { value: `${certificates.length}`, label: "Certificados" },
-            { value: `${certificates.reduce((acc, c) => acc + parseInt(c.hours), 0)}h`, label: "Horas de Estudo" },
             { value: `${new Set(certificates.map(c => c.institution)).size}`, label: "Instituições" },
           ].map((stat) => (
             <div key={stat.label} className="flex items-center gap-3">
@@ -231,21 +230,15 @@ export default function CertificatesSection() {
                     </span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <Calendar size={11} style={{ color: "var(--gray-text)" }} />
-                      <span
-                        className="text-xs font-mono"
-                        style={{ color: "var(--gray-text)" }}
-                      >
-                        {cert.date}
-                      </span>
-                    </div>
+                  <div className="flex items-center gap-2">
+                    <Calendar size={11} style={{ color: "var(--gray-text)" }} />
                     <span
                       className="text-xs font-mono"
-                      style={{ color: "var(--charcoal-light)" }}
+                      style={{ color: "var(--gray-text)" }}
                     >
-                      {cert.hours}
+                      {cert.date}
                     </span>
+                  </div>
                   </div>
                 </div>
 

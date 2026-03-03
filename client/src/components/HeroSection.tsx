@@ -133,23 +133,15 @@ export default function HeroSection() {
           <h1
             className="font-black leading-none mb-5 tracking-tight"
             style={{
-              fontSize: "clamp(2.8rem, 8vw, 5.5rem)",
-              color: "oklch(0.97 0.005 240)",
+              fontSize: '56px',
+              color: '#2ca098',
+              fontFamily: "'Roboto', sans-serif",
               opacity: mounted ? 1 : 0,
               transform: mounted ? "translateY(0)" : "translateY(30px)",
               transition: "opacity 0.9s ease 0.2s, transform 0.9s ease 0.2s",
             }}
           >
-            Seu Nome
-            <br />
-            <span
-              style={{
-                color: "var(--neon)",
-                textShadow: "0 0 30px rgba(0, 212, 255, 0.4)", fontFamily: "'Monoton', cursive",
-              }}
-            >
-              SANTOS
-            </span>
+            ANDREW SANTOS
           </h1>
 
           {/* Typewriter */}
