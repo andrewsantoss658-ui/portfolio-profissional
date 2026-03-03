@@ -14,8 +14,8 @@ const certificates = [
     category: "Desenvolvimento",
     categoryColor: "#00D4FF",
     url: "#",
-    hours: "120h",
   },
+   
   {
     id: 2,
     name: "JavaScript Avançado — ES6+",
@@ -24,8 +24,8 @@ const certificates = [
     category: "Programação",
     categoryColor: "#7C3AED",
     url: "#",
-    hours: "40h",
-  },
+   },
+   
   {
     id: 3,
     name: "React do Zero ao Avançado",
@@ -34,8 +34,8 @@ const certificates = [
     category: "Frontend",
     categoryColor: "#10B981",
     url: "#",
-    hours: "60h",
-  },
+   },
+   
   {
     id: 4,
     name: "Python para Data Science",
@@ -44,28 +44,59 @@ const certificates = [
     category: "Data Science",
     categoryColor: "#F59E0B",
     url: "#",
-    hours: "80h",
-  },
+    },
+   
   {
     id: 5,
-    name: "Banco de Dados SQL Completo",
-    institution: "Coursera",
+    name: "Introdução à Análise de Dados",
+    institution: "Fundação Bradesco",
     date: "Abr 2024",
     category: "Database",
     categoryColor: "#EF4444",
-    url: "#",
-    hours: "35h",
-  },
-  {
+    url: "https://lms.ev.org.br/mpls/Web/Lms/Student/PrintCertificateDownload.ashx?uid=4279394&p=5s6BRVyVBergSQBZ%252bpzMLiwxf61bYMDt",
+    },
+   
+     {
     id: 6,
-    name: "Docker e Kubernetes na Prática",
-    institution: "Linux Foundation",
-    date: "Fev 2024",
-    category: "DevOps",
+    name: "Introdução à Lei Geral para Proteção de Dados",
+    institution: "Academia Protegon",
+    date: "Mar 2022",
+    category: "Gestão de Privacidade e Proteção de Dados",
+    categoryColor: "#EF4444",
+    url: "#",
+    },
+   
+  {
+    id: 7,
+    name: "Fundamentos de Lógica de Programação",
+    institution: "Fundação Bradesco",
+    date: "Abr 2021",
+    category: "Programação",
+    categoryColor: "#8B5CF6",
+    url: "https://lms.ev.org.br/mpls/Web/Lms/Student/PrintCertificateDownload.ashx?uid=4279394&p=5s6BRVyVBeqe4mF23CyY10SESrLbldgm",
+     },
+
+      {
+    id: 9,
+    name: "Análise de textos",
+    institution: "Unifacs",
+    date: "Mar 2020",
+    category: "Letras",
     categoryColor: "#8B5CF6",
     url: "#",
-    hours: "50h",
   },
+   
+    {
+    id: 8,
+    name: "Montagem e Manutenção de Computadores",
+    institution: "Prepara Cursos",
+    date: "Abr 2017",
+    category: "Manutenção de Micro",
+    categoryColor: "#8B5CF6",
+    url: "#",
+   },
+   
+
 ];
 
 export default function CertificatesSection() {
