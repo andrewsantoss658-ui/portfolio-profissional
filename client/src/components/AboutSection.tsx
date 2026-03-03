@@ -14,7 +14,7 @@ const infoItems = [
   },
   {
     label: "Especialização Desejada",
-    value: "Desenvolvimento Web Full Stack",
+    value: "Estudante de tecnologia",
     icon: "⚡",
   },
   {
@@ -59,19 +59,19 @@ export default function AboutSection() {
                 className="text-sm leading-relaxed"
                 style={{ color: "var(--gray-text)" }}
               >
-                Sou um desenvolvedor apaixonado por tecnologia, sempre buscando
-                aprender e evoluir. Minha jornada na programação começou com
-                curiosidade genuína e se transformou em uma vocação profissional
-                que me motiva todos os dias.
+                Atualmente sou estudante de Análise e Desenvolvimento de Sistemas, com foco em especialização em Banco de Dados e Análise de Dados. 
+                 Ao longo da minha formação, estou desenvolvendo habilidades em lógica de programação, modelagem de banco de dados, consultas sql, estruturação de sistemas e análise de requisitos. 
+                 Busco constantemente aprimorar meus conhecimentos técnicos e acompanhar as evoluções da área de tecnologia, mantendo foco em desempenho, organização e boas práticas de desenvolvimento.
+
+Meu objetivo profissional é atuar na área de dados, contribuindo com soluções eficientes, seguras e escaláveis, agregando valor aos projetos por meio de análise estratégica, organização de informações e visão sistêmica.
+
               </p>
               <p
                 className="text-sm leading-relaxed"
                 style={{ color: "var(--gray-text)" }}
               >
-                Acredito que a tecnologia tem o poder de transformar vidas e
-                negócios. Por isso, me dedico a criar soluções que sejam não
-                apenas funcionais, mas também elegantes, intuitivas e
-                acessíveis para todos os usuários.
+                Acredito que a tecnologia é uma ferramenta capaz de impulsionar pessoas e organizações por meio da inovação e da eficiência. 
+                 Por isso, busco desenvolver soluções que vão além da funcionalidade, priorizando organização, desempenho e uma experiência clara, intuitiva e acessível para todos os usuários.
               </p>
             </div>
 
