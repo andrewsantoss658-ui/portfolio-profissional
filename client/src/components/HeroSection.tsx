@@ -9,10 +9,10 @@ import { ChevronDown, Download } from "lucide-react";
 const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663397639934/VuzrUVVs5i96bHktR5Gwxp/hero-bg-jMFNcPTNdTZxvT9Zf3hXDa.webp";
 
 const phrases = [
-  "Desenvolvedor Full Stack",
+  "Análise de Dados",
   "Entusiasta de Tecnologia",
   "Solucionador de Problemas",
-  "Criador de Experiências",
+  "Estudante em Desenvolvimento",
 ];
 
 export default function HeroSection() {
@@ -184,9 +184,7 @@ export default function HeroSection() {
               transition: "opacity 0.8s ease 0.5s",
             }}
           >
-            Apaixonado por tecnologia e inovação, transformo ideias em soluções
-            digitais elegantes e funcionais. Sempre em busca de novos desafios
-            e aprendizados constantes.
+            Atualmente sou estudante de Análise e Desenvolvimento de Sistemas, com foco em especialização em Banco de Dados e Análise de Dados.
           </p>
 
           {/* CTAs */}
