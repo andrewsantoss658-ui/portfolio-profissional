@@ -145,7 +145,7 @@ export default function Footer() {
             className="text-xs font-mono"
             style={{ color: "var(--gray-text)" }}
           >
-            © {year} Dev.Portfolio — Todos os direitos reservados
+            © {2026} Andrew Santos — Todos os direitos reservados
           </p>
 
           <div className="flex items-center gap-4">
