@@ -59,19 +59,14 @@ export default function AboutSection() {
                 className="text-sm leading-relaxed"
                 style={{ color: "var(--gray-text)" }}
               >
-                Atualmente sou estudante de Análise e Desenvolvimento de Sistemas, com foco em especialização em Banco de Dados e Análise de Dados. 
-                 Ao longo da minha formação, estou desenvolvendo habilidades em lógica de programação, modelagem de banco de dados, consultas sql, estruturação de sistemas e análise de requisitos. 
-                 Busco constantemente aprimorar meus conhecimentos técnicos e acompanhar as evoluções da área de tecnologia, mantendo foco em desempenho, organização e boas práticas de desenvolvimento.
-
-Meu objetivo profissional é atuar na área de dados, contribuindo com soluções eficientes, seguras e escaláveis, agregando valor aos projetos por meio de análise estratégica, organização de informações e visão sistêmica.
+                Sou estudante de Análise e Desenvolvimento de Sistemas com uma paixão clara: extrair valor através dos dados. Durante minha formação, venho aprofundando conhecimentos em modelagem de dados, consultas SQL complexas e estruturação de sistemas.
 
               </p>
               <p
                 className="text-sm leading-relaxed"
                 style={{ color: "var(--gray-text)" }}
               >
-                Acredito que a tecnologia é uma ferramenta capaz de impulsionar pessoas e organizações por meio da inovação e da eficiência. 
-                 Por isso, busco desenvolver soluções que vão além da funcionalidade, priorizando organização, desempenho e uma experiência clara, intuitiva e acessível para todos os usuários.
+                Mais do que apenas escrever código, busco entender a visão sistêmica do negócio para entregar soluções eficientes e seguras. Sou movido pela evolução constante da tecnologia e aplico boas práticas de desenvolvimento em cada projeto que realizo, sempre com foco em desempenho e organização.
               </p>
             </div>
 
