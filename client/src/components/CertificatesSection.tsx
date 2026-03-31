@@ -2,98 +2,56 @@
    CertificatesSection — "Precision Dark — Editorial Tech"
    Design: Cards de certificados com ícone de categoria, meta info e botão visualizar
    ============================================================ */
-import { Award, ExternalLink, Calendar, Building2, CheckCircle2 } from "lucide-react";
+import { Award, Building2, CheckCircle2 } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 
 const certificates = [
   {
-    id: 1,
-    name: "Desenvolvimento Web Full Stack",
-    institution: "Rocketseat",
-    date: "Dez 2024",
-    category: "Desenvolvimento",
-    categoryColor: "#00D4FF",
-    url: "#",
-  },
-   
-  {
-    id: 2,
-    name: "JavaScript Avançado — ES6+",
-    institution: "Alura",
-    date: "Out 2024",
-    category: "Programação",
-    categoryColor: "#7C3AED",
-    url: "#",
-   },
-   
-  {
-    id: 3,
-    name: "React do Zero ao Avançado",
-    institution: "Udemy",
-    date: "Ago 2024",
-    category: "Frontend",
-    categoryColor: "#10B981",
-    url: "#",
-   },
-   
-  {
     id: 4,
     name: "Python para Data Science",
     institution: "DIO",
-    date: "Jun 2024",
     category: "Data Science",
     categoryColor: "#F59E0B",
-    url: "#",
     },
    
   {
     id: 5,
     name: "Introdução à Análise de Dados",
     institution: "Fundação Bradesco",
-    date: "Abr 2024",
     category: "Database",
     categoryColor: "#EF4444",
-    url: "https://lms.ev.org.br/mpls/Web/Lms/Student/PrintCertificateDownload.ashx?uid=4279394&p=5s6BRVyVBergSQBZ%252bpzMLiwxf61bYMDt",
     },
    
      {
     id: 6,
     name: "Introdução à Lei Geral para Proteção de Dados",
     institution: "Academia Protegon",
-    date: "Mar 2022",
     category: "Gestão de Privacidade e Proteção de Dados",
     categoryColor: "#EF4444",
-    url: "#",
     },
    
   {
     id: 7,
     name: "Fundamentos de Lógica de Programação",
     institution: "Fundação Bradesco",
-    date: "Abr 2021",
     category: "Programação",
     categoryColor: "#8B5CF6",
-    url: "https://lms.ev.org.br/mpls/Web/Lms/Student/PrintCertificateDownload.ashx?uid=4279394&p=5s6BRVyVBeqe4mF23CyY10SESrLbldgm",
      },
 
       {
     id: 9,
     name: "Análise de textos",
     institution: "Unifacs",
-    date: "Mar 2020",
     category: "Letras",
     categoryColor: "#8B5CF6",
-    url: "#",
   },
    
     {
     id: 8,
     name: "Montagem e Manutenção de Computadores",
     institution: "Prepara Cursos",
-    date: "Abr 2017",
     category: "Manutenção de Micro",
     categoryColor: "#8B5CF6",
-    url: "#",
    },
    
 
@@ -229,32 +187,10 @@ export default function CertificatesSection() {
                       {cert.institution}
                     </span>
                   </div>
-                  <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <Calendar size={11} style={{ color: "var(--gray-text)" }} />
-                    <span
-                      className="text-xs font-mono"
-                      style={{ color: "var(--gray-text)" }}
-                    >
-                      {cert.date}
-                    </span>
-                  </div>
-                  </div>
+
                 </div>
 
-                {/* Button */}
-                <a
-                  href={cert.url}
-                  className="flex items-center gap-2 text-xs font-semibold pt-4 transition-all duration-200 group"
-                  style={{
-                    borderTop: "1px solid var(--charcoal-light)",
-                    color: cert.categoryColor,
-                  }}
-                >
-                  <ExternalLink size={11} />
-                  Ver Certificado
-                  <span className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity">→</span>
-                </a>
+
               </div>
             </div>
           ))}
