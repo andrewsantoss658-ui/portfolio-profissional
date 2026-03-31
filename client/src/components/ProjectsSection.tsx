@@ -97,6 +97,30 @@ const projects: Project[] = [
     featured: false,
     year: "2023",
   },
+  {
+    id: 9,
+    type: "individual",
+    title: "GESTUM - Sistema de Gestão",
+    description:
+      "Sistema de gestão desenvolvido para organização de tarefas, controle de processos e gerenciamento de informações, com foco em produtividade e organização de dados.",
+    techs: ["React", "Node.js", "PostgreSQL"],
+    github: "#",
+    demo: "#",
+    featured: false,
+    year: "2024",
+  },
+  {
+    id: 10,
+    type: "individual",
+    title: "Portfólio Interativo",
+    description:
+      "Site de portfólio profissional desenvolvido para apresentar projetos, certificações, competências e trajetória acadêmica, com design moderno, animações e navegação intuitiva.",
+    techs: ["React", "Tailwind CSS", "Framer Motion"],
+    github: "#",
+    demo: "#",
+    featured: false,
+    year: "2024",
+  },
 ];
 
 type Filter = "todos" | "individual" | "equipe";
