@@ -261,53 +261,49 @@ export default function CertificatesSection() {
             ))
           ) : (
             // Actual certificates
-            certificates.slice(0, visibleCount).map((cert, i) => (
+            certificates.slice(0, visibleCount).map((cert, i) => {
+              const color = (cert as any).categoryColor || "var(--neon)";
+              return (
               <div
                 key={cert.id}
-                className={`animate-fade-up delay-${Math.min((i + 1) * 100, 500)} flex flex-col rounded-xl overflow-hidden transition-all duration-300`}
+                className={`animate-fade-up delay-${Math.min((i + 1) * 100, 500)} flex flex-col rounded-xl overflow-hidden transition-all duration-300 group`}
                 style={{
                   background: "var(--graphite)",
-                  border: "1px solid var(--charcoal-light)",
+                  border: `2px solid var(--charcoal-light)`,
+                  borderTop: `3px solid ${color}`,
                 }}
                 onMouseEnter={(e) => {
-                  const color = (cert as any).categoryColor || "var(--neon)";
                   (e.currentTarget as HTMLElement).style.borderColor = `${color}40`;
-                  (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)";
-                  (e.currentTarget as HTMLElement).style.boxShadow = `0 8px 25px rgba(0,0,0,0.3), 0 0 15px ${color}10`;
+                  (e.currentTarget as HTMLElement).style.borderTopColor = color;
+                  (e.currentTarget as HTMLElement).style.transform = "translateY(-4px)";
+                  (e.currentTarget as HTMLElement).style.boxShadow = `0 12px 30px rgba(0,0,0,0.4), 0 0 20px ${color}15`;
                 }}
                 onMouseLeave={(e) => {
                   (e.currentTarget as HTMLElement).style.borderColor = "var(--charcoal-light)";
+                  (e.currentTarget as HTMLElement).style.borderTopColor = color;
                   (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
                   (e.currentTarget as HTMLElement).style.boxShadow = "none";
                 }}
               >
-                  {/* Top color accent */}
-                  <div
-                    className="h-0.5 w-full"
-                    style={{
-                      background: `linear-gradient(to right, ${(cert as any).categoryColor || "var(--neon)"}, transparent)`,
-                    }}
-                  />
-
                 <div className="p-5 flex flex-col flex-1">
                   {/* Header */}
                   <div className="flex items-start justify-between mb-4">
                     <div
                       className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
                       style={{
-                        background: `${((cert as any).categoryColor || "var(--neon)")}12`,
-                        border: `1px solid ${((cert as any).categoryColor || "var(--neon)")}25`,
+                        background: `${color}12`,
+                        border: `1px solid ${color}25`,
                       }}
                     >
-                      <Award size={17} style={{ color: (cert as any).categoryColor || "var(--neon)" }} />
+                      <Award size={17} style={{ color: color }} />
                     </div>
                     <div className="flex items-center gap-2">
                       <span
                         className="text-xs font-mono px-2 py-0.5 rounded"
                         style={{
-                          background: `${((cert as any).categoryColor || "var(--neon)")}10`,
-                          color: (cert as any).categoryColor || "var(--neon)",
-                          border: `1px solid ${((cert as any).categoryColor || "var(--neon)")}20`,
+                          background: `${color}10`,
+                          color: color,
+                          border: `1px solid ${color}20`,
                         }}
                       >
                         {cert.category}
@@ -337,7 +333,8 @@ export default function CertificatesSection() {
                   </div>
                 </div>
               </div>
-            ))
+            );
+            })
           )}
         </div>
 
