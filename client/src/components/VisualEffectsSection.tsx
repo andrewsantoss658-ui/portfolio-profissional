@@ -1,25 +1,30 @@
 /*
    VisualEffectsSection — Seção com efeitos visuais modernos
-   Design: Integra código animado, gráficos, rede e contadores
+   Design: Contadores e Tecnologias Holográficas
    Paleta: Azul escuro, preto, verde tecnológico
    ============================================================ */
-import CodeTypingAnimation from "./CodeTypingAnimation";
+import { useEffect, useRef, useState } from "react";
 import DataFlowBackground from "./DataFlowBackground";
-import AnimatedChart from "./AnimatedChart";
 import AnimatedCounter from "./AnimatedCounter";
-import NetworkGraph from "./NetworkGraph";
 import SectionHeader from "./SectionHeader";
 
-const codeSnippet = [
-  "// Análise de Dados em Tempo Real",
-  "const analyzeData = async (dataset) => {",
-  "  const processed = await pipeline.transform(dataset);",
-  "  const insights = ml.analyze(processed);",
-  "  return insights.filter(x => x.confidence > 0.85);",
-  "};",
-];
-
 export default function VisualEffectsSection() {
+  const [holographicActive, setHolographicActive] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHolographicActive(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
       id="efeitos"
@@ -36,140 +41,174 @@ export default function VisualEffectsSection() {
         <div className="animate-fade-up mb-16">
           <SectionHeader
             number="04 / 06"
-            title="Tecnologia & Análise"
-            subtitle="Efeitos visuais que remetem à programação, análise de dados e estruturas de rede"
+            title="Estatísticas & Tecnologias"
+            subtitle="Progresso acadêmico e stack principal"
           />
         </div>
 
-        {/* Grid de conteúdo */}
-        <div className="grid lg:grid-cols-2 gap-12 mb-16">
-          {/* Coluna 1: Código e Contadores */}
-          <div className="animate-fade-up delay-100">
-            {/* Código animado */}
-            <div className="mb-8">
-              <h3
-                className="text-sm font-mono mb-4"
-                style={{ color: "var(--neon)" }}
-              >
-                &gt;_ Código em Ação
-              </h3>
-              <CodeTypingAnimation
-                lines={codeSnippet}
-                speed={40}
-                className="text-xs"
-              />
-            </div>
-
-            {/* Contadores */}
-            <div className="grid grid-cols-3 gap-4">
-              {[
-                { label: "Projetos", value: 15, suffix: "+" },
-                { label: "Tecnologias", value: 12, suffix: "+" },
-                { label: "Clientes", value: 8, suffix: "+" },
-              ].map((item) => (
-                <div
-                  key={item.label}
-                  className="p-4 rounded-lg border"
-                  style={{
-                    background: "rgba(44, 160, 152, 0.05)",
-                    border: "1px solid rgba(44, 160, 152, 0.2)",
-                  }}
-                >
-                  <div
-                    className="text-2xl font-bold mb-1"
-                    style={{ color: "var(--neon)" }}
-                  >
-                    <AnimatedCounter
-                      end={item.value}
-                      duration={2000}
-                      suffix={item.suffix}
-                    />
-                  </div>
-                  <div
-                    className="text-xs font-mono"
-                    style={{ color: "var(--gray-text)" }}
-                  >
-                    {item.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Coluna 2: Gráficos */}
-          <div className="animate-fade-up delay-200">
-            <h3
-                className="text-sm font-mono mb-4"
-                style={{ color: "var(--neon)" }}
-              >
-                &gt;_ Análise de Desempenho
-              </h3>
-
-            {/* Gráfico de linha */}
-            <div className="mb-8">
-              <AnimatedChart
-                type="line"
-                data={[20, 35, 45, 60, 75, 85, 90, 95]}
-                labels={["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago"]}
-                height={200}
-              />
-            </div>
-
-            {/* Gráfico de barras */}
-            <div>
-              <AnimatedChart
-                type="bar"
-                data={[40, 60, 50, 70, 80, 65, 75]}
-                labels={["React", "Node", "SQL", "Python", "AWS", "Docker", "Git"]}
-                height={180}
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Rede de Conexões */}
-        <div className="animate-fade-up delay-300">
-          <h3
-            className="text-sm font-mono mb-4"
-            style={{ color: "var(--neon)" }}
-          >
-            &gt;_ Arquitetura de Sistemas
-          </h3>
-          <NetworkGraph nodeCount={12} connectionDistance={200} height={400} />
-        </div>
-
-        {/* Stats em linha */}
-        <div className="grid md:grid-cols-4 gap-4 mt-16 animate-fade-up delay-400">
+        {/* Contadores */}
+        <div className="grid md:grid-cols-2 gap-6 mb-16 animate-fade-up delay-100">
           {[
-            { label: "Linhas de Código", value: "50K+" },
-            { label: "Commits", value: "1.2K+" },
-            { label: "Testes Automatizados", value: "500+" },
-            { label: "Uptime", value: "99.9%" },
-          ].map((stat) => (
+            { label: "Projetos em andamento", value: 2, suffix: "" },
+            { label: "Previsão de formação: Dezembro de 2027", value: 100, suffix: "%" },
+          ].map((item) => (
             <div
-              key={stat.label}
-              className="p-4 rounded-lg border text-center"
+              key={item.label}
+              className="p-6 rounded-lg border text-center"
               style={{
                 background: "rgba(44, 160, 152, 0.05)",
                 border: "1px solid rgba(44, 160, 152, 0.2)",
               }}
             >
               <div
-                className="text-xl font-bold mb-2"
+                className="text-3xl font-bold mb-2"
                 style={{ color: "var(--neon)" }}
               >
-                {stat.value}
+                <AnimatedCounter
+                  end={item.value}
+                  duration={2000}
+                  suffix={item.suffix}
+                />
               </div>
               <div
                 className="text-xs font-mono"
                 style={{ color: "var(--gray-text)" }}
               >
-                {stat.label}
+                {item.label}
               </div>
             </div>
           ))}
         </div>
+
+        {/* Tecnologias Holográficas */}
+        <div ref={sectionRef} className="animate-fade-up delay-200">
+          <h3
+            className="text-sm font-mono mb-8"
+            style={{ color: "var(--neon)" }}
+          >
+            &gt;_ Tecnologias Holográficas
+          </h3>
+
+          {/* Grid de cards com efeito holográfico */}
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                name: "Python",
+                desc: "Análise de dados, backend e automação",
+                icon: "🐍",
+                color: "#3776AB",
+              },
+              {
+                name: "Git",
+                desc: "Controle de versão e colaboração",
+                icon: "📦",
+                color: "#F05032",
+              },
+              {
+                name: "SQL",
+                desc: "Banco de dados e queries otimizadas",
+                icon: "💾",
+                color: "#336791",
+              },
+            ].map((tech, idx) => (
+              <div
+                key={tech.name}
+                className="relative group"
+                style={{
+                  animation: holographicActive
+                    ? `holographicPulse 3s ease-in-out ${idx * 0.3}s infinite`
+                    : "none",
+                }}
+              >
+                {/* Efeito de brilho holográfico */}
+                <div
+                  className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{
+                    background: `radial-gradient(circle at 30% 30%, rgba(${
+                      tech.color === "#3776AB"
+                        ? "55, 118, 171"
+                        : tech.color === "#F05032"
+                        ? "240, 80, 50"
+                        : "51, 103, 145"
+                    }, 0.2), transparent)`,
+                    filter: "blur(20px)",
+                  }}
+                />
+
+                {/* Card principal */}
+                <div
+                  className="relative p-6 rounded-lg border backdrop-blur-sm transition-all duration-300 group-hover:border-opacity-100"
+                  style={{
+                    background: "rgba(44, 160, 152, 0.05)",
+                    border: `1px solid ${tech.color}40`,
+                    boxShadow: holographicActive
+                      ? `0 0 20px ${tech.color}20, inset 0 0 20px ${tech.color}10`
+                      : "none",
+                  }}
+                  onMouseEnter={(e) => {
+                    const el = e.currentTarget as HTMLElement;
+                    el.style.borderColor = `${tech.color}80`;
+                    el.style.background = "rgba(44, 160, 152, 0.1)";
+                    el.style.boxShadow = `0 0 30px ${tech.color}30, inset 0 0 30px ${tech.color}15`;
+                  }}
+                  onMouseLeave={(e) => {
+                    const el = e.currentTarget as HTMLElement;
+                    el.style.borderColor = `${tech.color}40`;
+                    el.style.background = "rgba(44, 160, 152, 0.05)";
+                    el.style.boxShadow = holographicActive
+                      ? `0 0 20px ${tech.color}20, inset 0 0 20px ${tech.color}10`
+                      : "none";
+                  }}
+                >
+                  {/* Ícone com animação */}
+                  <div
+                    className="text-4xl mb-4 transition-transform duration-300 group-hover:scale-110"
+                    style={{
+                      textShadow: `0 0 10px ${tech.color}40`,
+                    }}
+                  >
+                    {tech.icon}
+                  </div>
+
+                  {/* Conteúdo */}
+                  <h4
+                    className="font-bold mb-2 transition-colors duration-300"
+                    style={{ color: "oklch(0.93 0.005 240)" }}
+                  >
+                    {tech.name}
+                  </h4>
+                  <p
+                    className="text-sm"
+                    style={{ color: "var(--gray-text)" }}
+                  >
+                    {tech.desc}
+                  </p>
+
+                  {/* Linha de brilho inferior */}
+                  <div
+                    className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{
+                      background: `linear-gradient(90deg, transparent, ${tech.color}, transparent)`,
+                    }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
+
+      {/* Estilos de animação holográfica */}
+      <style>{`
+        @keyframes holographicPulse {
+          0%, 100% {
+            filter: drop-shadow(0 0 8px rgba(44, 160, 152, 0.2));
+          }
+          50% {
+            filter: drop-shadow(0 0 16px rgba(44, 160, 152, 0.4));
+          }
+        }
+      `}</style>
     </section>
   );
 }

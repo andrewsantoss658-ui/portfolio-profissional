@@ -9,8 +9,8 @@ import SectionHeader from "./SectionHeader";
 const SKILLS_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663397639934/VuzrUVVs5i96bHktR5Gwxp/skills-accent-hjBSSHjEt2agp2bUgb6m2v.webp";
 
 const hardSkills = [
-  { name: "HTML / CSS / Tailwind", level: 90, color: "#E34F26" },
-  { name: "JavaScript / TypeScript", level: 85, color: "#F7DF1E" },
+  { name: "HTML / CSS / Tailwind", level: 80, color: "#E34F26" },
+  { name: "JavaScript / TypeScript", level: 90, color: "#F7DF1E" },
   { name: "React / Next.js", level: 80, color: "#61DAFB" },
   { name: "Git / GitHub", level: 85, color: "#F05032" },
   { name: "Node.js / Express", level: 75, color: "#339933" },

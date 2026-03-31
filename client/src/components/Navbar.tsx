@@ -4,7 +4,7 @@
    Comportamento: Transparente no topo, escurece ao scroll
    ============================================================ */
 import { useState, useEffect } from "react";
-import { Menu, X, Code2 } from "lucide-react";
+import { Menu, X, Code2, Download } from "lucide-react";
 
 const navLinks = [
   { label: "Sobre", href: "#sobre" },
@@ -117,6 +117,28 @@ export default function Navbar() {
           >
             Contato
           </a>
+          <a
+            href="https://drive.google.com/file/d/1MQV6QPtOorodx7aIQdzrZYsaL9wQKb0B/view?usp=drive_link"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 text-xs font-medium rounded-md border transition-all duration-200 ml-2"
+            style={{
+              borderColor: "rgba(44, 160, 152, 0.3)",
+              color: "var(--neon)",
+              background: "rgba(44, 160, 152, 0.05)",
+            }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLElement).style.borderColor = "rgba(44, 160, 152, 0.6)";
+              (e.currentTarget as HTMLElement).style.background = "rgba(44, 160, 152, 0.1)";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLElement).style.borderColor = "rgba(44, 160, 152, 0.3)";
+              (e.currentTarget as HTMLElement).style.background = "rgba(44, 160, 152, 0.05)";
+            }}
+          >
+            <Download size={14} />
+            Baixar currículo
+          </a>
         </nav>
 
         {/* Mobile menu button */}
@@ -163,13 +185,27 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
-            <div className="px-6 pt-3 pb-4">
+            <div className="px-6 pt-3 pb-4 space-y-2">
               <a
                 href="#contato"
                 onClick={(e) => { e.preventDefault(); handleNavClick("#contato"); }}
                 className="btn-neon text-xs block text-center"
               >
                 Contato
+              </a>
+              <a
+                href="https://drive.google.com/file/d/1MQV6QPtOorodx7aIQdzrZYsaL9wQKb0B/view?usp=drive_link"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 px-4 py-2 text-xs font-medium rounded-md border transition-all duration-200"
+                style={{
+                  borderColor: "rgba(44, 160, 152, 0.3)",
+                  color: "var(--neon)",
+                  background: "rgba(44, 160, 152, 0.05)",
+                }}
+              >
+                <Download size={14} />
+                Baixar currículo
               </a>
             </div>
           </nav>

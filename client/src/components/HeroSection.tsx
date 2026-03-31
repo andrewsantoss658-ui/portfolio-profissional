@@ -222,9 +222,8 @@ export default function HeroSection() {
             }}
           >
             {[
-              { value: "10+", label: "Projetos Concluídos" },
-              { value: "8+", label: "Tecnologias" },
-              { value: "2+", label: "Anos de Estudo" },
+              { value: "2", label: "Projetos em andamento" },
+              { value: "100%", label: "Previsão de formação: Dezembro de 2027" },
             ].map((stat) => (
               <div key={stat.label} className="group">
                 <div
