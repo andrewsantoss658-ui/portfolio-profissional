@@ -9,7 +9,7 @@ import SectionHeader from "./SectionHeader";
 const SKILLS_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663397639934/VuzrUVVs5i96bHktR5Gwxp/skills-accent-hjBSSHjEt2agp2bUgb6m2v.webp";
 
 const hardSkills = [
-  { name: "Python", classe: "Intermediário / Avançado", level: 75, color: "#3776AB" },
+  { name: "Python", classe: "Intermediário", level: 70, color: "#3776AB" },
   { name: "HTML / CSS / Tailwind", classe: "Intermediário", level: 65, color: "#E34F26" },
   { name: "JavaScript / TypeScript", classe: "Intermediário", level: 60, color: "#F7DF1E" },
   { name: "Git / GitHub", classe: "Intermediário", level: 60, color: "#F05032" },
