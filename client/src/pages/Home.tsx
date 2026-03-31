@@ -13,6 +13,7 @@ import ProjectsSection from "@/components/ProjectsSection";
 import VisualEffectsSection from "@/components/VisualEffectsSection";
 import SkillsSection from "@/components/SkillsSection";
 import CertificatesSection from "@/components/CertificatesSection";
+import HolographicDivider from "@/components/HolographicDivider";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
@@ -66,6 +67,7 @@ export default function Home() {
         <VisualEffectsSection />
         <SkillsSection />
         <CertificatesSection />
+        <HolographicDivider />
         <ContactSection />
       </main>
       <Footer />
