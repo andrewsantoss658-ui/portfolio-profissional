@@ -2,8 +2,6 @@
    AboutSection — "Precision Dark — Editorial Tech"
    Design: Layout assimétrico com avatar neon à direita e texto editorial à esquerda
    ============================================================ */
-import { useState } from "react";
-import { Upload } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 
 const DEFAULT_ABOUT_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663397639934/VuzrUVVs5i96bHktR5Gwxp/as_65ef5a88.jpeg";
@@ -32,21 +30,6 @@ const infoItems = [
 ];
 
 export default function AboutSection() {
-  const [profileImg, setProfileImg] = useState<string>(DEFAULT_ABOUT_IMG);
-  const [isHoveringUpload, setIsHoveringUpload] = useState(false);
-
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const result = event.target?.result as string;
-        setProfileImg(result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
   return (
     <section
       id="sobre"
@@ -154,50 +137,16 @@ Meu objetivo profissional é atuar na área de dados, contribuindo com soluçõe
                 }}
               />
 
-              {/* Main image with upload capability */}
-              <div 
-                className="relative group cursor-pointer"
-                onMouseEnter={() => setIsHoveringUpload(true)}
-                onMouseLeave={() => setIsHoveringUpload(false)}
-              >
+              {/* Main image */}
+              <div className="relative">
                 <img
-                  src={profileImg}
+                  src={DEFAULT_ABOUT_IMG}
                   alt="Perfil tecnológico"
-                  className="relative rounded-2xl w-full max-w-xs object-cover float-anim transition-opacity duration-300"
+                  className="relative rounded-2xl w-full max-w-xs object-cover float-anim"
                   style={{
                     border: "1px solid rgba(0, 212, 255, 0.25)",
                     boxShadow: "0 0 50px rgba(0, 212, 255, 0.08), 0 20px 60px rgba(0,0,0,0.5)",
-                    opacity: isHoveringUpload ? 0.7 : 1,
                   }}
-                />
-
-                {/* Upload overlay */}
-                {isHoveringUpload && (
-                  <div
-                    className="absolute inset-0 rounded-2xl flex flex-col items-center justify-center gap-2"
-                    style={{
-                      background: "rgba(0, 0, 0, 0.6)",
-                      backdropFilter: "blur(4px)",
-                    }}
-                  >
-                    <Upload size={24} style={{ color: "var(--neon)" }} />
-                    <span className="text-xs font-medium" style={{ color: "var(--neon)" }}>
-                      Clique para alterar
-                    </span>
-                  </div>
-                )}
-
-                {/* Hidden file input */}
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageUpload}
-                  className="hidden"
-                  id="profile-upload"
-                />
-                <label
-                  htmlFor="profile-upload"
-                  className="absolute inset-0 rounded-2xl cursor-pointer"
                 />
 
                 {/* Code badge */}
