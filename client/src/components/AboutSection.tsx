@@ -6,7 +6,7 @@ import { useState } from "react";
 import { Upload } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 
-const DEFAULT_ABOUT_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663397639934/VuzrUVVs5i96bHktR5Gwxp/about-visual-P2zwtezm7qUq86t7osPPR5.webp";
+const DEFAULT_ABOUT_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663397639934/VuzrUVVs5i96bHktR5Gwxp/as_65ef5a88.jpeg";
 
 const infoItems = [
   {

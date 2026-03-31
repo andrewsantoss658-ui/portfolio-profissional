@@ -1,4 +1,4 @@
-/*
+/* ============================================================
    ProjectsSection — "Precision Dark — Editorial Tech"
    Design: Grid de cards com filtro por tipo, tags de tech, botões de ação
    Imagem de fundo: projects-bg para textura
@@ -7,49 +7,9 @@
 import { useState, useEffect } from "react";
 import { ExternalLink, Github, Users, User, Code2 } from "lucide-react";
 import SectionHeader from "./SectionHeader";
+import { trpc } from "@/lib/trpc";
 
 const PROJECTS_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663397639934/VuzrUVVs5i96bHktR5Gwxp/projects-bg-3cZiUG3uxQnKjTLEp96ZJG.webp";
-
-type ProjectType = "individual" | "equipe";
-
-interface Project {
-  id: number;
-  type: ProjectType;
-  title: string;
-  description: string;
-  techs: string[];
-  github: string;
-  demo: string;
-  featured: boolean;
-  year: string;
-}
-
-const projects: Project[] = [
-  {
-    id: 9,
-    type: "individual",
-    title: "GESTUM - Sistema de Gestão",
-    description:
-      "Sistema de gestão desenvolvido para organização de tarefas, controle de processos e gerenciamento de informações, com foco em produtividade e organização de dados.",
-    techs: ["React", "Node.js", "PostgreSQL"],
-    github: "#",
-    demo: "#",
-    featured: false,
-    year: "2024",
-  },
-  {
-    id: 10,
-    type: "individual",
-    title: "Portfólio Interativo",
-    description:
-      "Site de portfólio profissional desenvolvido para apresentar projetos, certificações, competências e trajetória acadêmica, com design moderno, animações e navegação intuitiva.",
-    techs: ["React", "Tailwind CSS", "Framer Motion"],
-    github: "#",
-    demo: "#",
-    featured: false,
-    year: "2024",
-  },
-];
 
 type Filter = "todos" | "individual" | "equipe";
 
@@ -106,7 +66,7 @@ function ProjectSkeleton() {
             }}
           />
           <div
-            className="h-4 rounded w-4/5"
+            className="h-4 rounded w-3/4"
             style={{
               background: "linear-gradient(90deg, rgba(0,212,255,0.1) 0%, rgba(0,212,255,0.05) 50%, rgba(0,212,255,0.1) 100%)",
               backgroundSize: "200% 100%",
@@ -115,8 +75,8 @@ function ProjectSkeleton() {
           />
         </div>
 
-        {/* Tech tags skeleton */}
-        <div className="flex gap-2 flex-wrap">
+        {/* Tags skeleton */}
+        <div className="flex flex-wrap gap-2">
           {[1, 2, 3].map((i) => (
             <div
               key={i}
@@ -131,7 +91,7 @@ function ProjectSkeleton() {
         </div>
 
         {/* Buttons skeleton */}
-        <div className="flex gap-2 mt-4">
+        <div className="flex gap-2 mt-auto">
           <div
             className="h-8 flex-1 rounded"
             style={{
@@ -156,26 +116,30 @@ function ProjectSkeleton() {
 
 export default function ProjectsSection() {
   const [filter, setFilter] = useState<Filter>("todos");
-  const [isLoading, setIsLoading] = useState(true);
+  const [visibleCount, setVisibleCount] = useState(6);
+  const itemsPerPage = 3;
 
-  // Simular carregamento de dados
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1500);
+  // Query para carregar projetos do banco
+  const projectsQuery = trpc.portfolio.projects.list.useQuery();
 
-    return () => clearTimeout(timer);
-  }, [filter]);
+  // Filtra projetos baseado no filtro selecionado
+  const filteredProjects = projectsQuery.data?.filter((project) => {
+    if (filter === "todos") return true;
+    const projectType = project.type === "individual" ? "individual" : "equipe";
+    return projectType === filter;
+  }) || [];
 
-  // Resetar loading ao trocar filtro
-  const handleFilterChange = (newFilter: Filter) => {
-    setFilter(newFilter);
-    setIsLoading(true);
+  const visibleProjects = filteredProjects.slice(0, visibleCount);
+  const hasMore = visibleCount < filteredProjects.length;
+
+  const handleLoadMore = () => {
+    setVisibleCount((prev) => prev + itemsPerPage);
   };
 
-  const filtered = projects.filter((p) =>
-    filter === "todos" ? true : p.type === filter
-  );
+  // Reseta visibleCount quando o filtro muda
+  useEffect(() => {
+    setVisibleCount(6);
+  }, [filter]);
 
   return (
     <section
@@ -183,242 +147,241 @@ export default function ProjectsSection() {
       className="py-28 relative overflow-hidden"
       style={{ background: "var(--charcoal)" }}
     >
-      {/* Background texture */}
+      {/* Background */}
       <div
-        className="absolute inset-0 opacity-15 bg-cover bg-center"
-        style={{ backgroundImage: `url(${PROJECTS_BG})` }}
+        className="absolute inset-0 opacity-5"
+        style={{
+          backgroundImage: `url('${PROJECTS_BG}')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
       />
+
+      {/* Subtle top glow */}
       <div
-        className="absolute inset-0"
-        style={{ background: "rgba(28, 28, 30, 0.88)" }}
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px"
+        style={{
+          background: "linear-gradient(to right, transparent, var(--neon), transparent)",
+          opacity: 0.2,
+        }}
       />
-
-      <style>{`
-        @keyframes shimmer {
-          0% {
-            backgroundPosition: -200% 0;
-          }
-          100% {
-            backgroundPosition: 200% 0;
-          }
-        }
-
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .project-card-enter {
-          animation: fadeInUp 0.6s ease-out forwards;
-        }
-      `}</style>
 
       <div className="container relative z-10">
         <div className="animate-fade-up">
           <SectionHeader
-            number="03 / 06"
+            number="02 / 06"
             title="Projetos"
-            subtitle="Uma seleção dos meus trabalhos — projetos individuais e colaborativos que demonstram minhas habilidades técnicas."
+            subtitle="Trabalhos que demonstram minha capacidade de análise, desenvolvimento e resolução de problemas."
           />
         </div>
 
-        {/* Filter tabs */}
-        <div className="flex gap-2 mb-10 animate-fade-up delay-100">
-          {(["todos", "individual", "equipe"] as Filter[]).map((f) => (
+        {/* Filter Buttons */}
+        <div className="flex flex-wrap gap-3 mb-12 animate-fade-up delay-100">
+          {(["todos", "individual", "equipe"] as const).map((filterType) => (
             <button
-              key={f}
-              onClick={() => handleFilterChange(f)}
-              className="text-xs font-mono px-4 py-2 rounded-md border capitalize transition-all duration-200"
+              key={filterType}
+              onClick={() => setFilter(filterType)}
+              className="px-6 py-2 rounded-lg font-semibold text-sm transition-all duration-300"
               style={{
-                borderColor: filter === f ? "var(--neon)" : "var(--charcoal-light)",
-                color: filter === f ? "var(--neon)" : "var(--gray-text)",
-                background: filter === f ? "rgba(0,212,255,0.06)" : "transparent",
-                boxShadow: filter === f ? "0 0 10px rgba(0,212,255,0.1)" : "none",
+                background: filter === filterType ? "var(--neon)" : "transparent",
+                border: `1.5px solid ${filter === filterType ? "var(--neon)" : "var(--charcoal-light)"}`,
+                color: filter === filterType ? "#0A0A0A" : "var(--neon)",
+              }}
+              onMouseEnter={(e) => {
+                if (filter !== filterType) {
+                  (e.currentTarget as HTMLElement).style.borderColor = "var(--neon)";
+                  (e.currentTarget as HTMLElement).style.color = "var(--neon)";
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (filter !== filterType) {
+                  (e.currentTarget as HTMLElement).style.borderColor = "var(--charcoal-light)";
+                  (e.currentTarget as HTMLElement).style.color = "var(--neon)";
+                }
               }}
             >
-              {f === "todos" ? "Todos" : f === "individual" ? "Individual" : "Em Equipe"}
+              {filterType === "todos" && "Todos"}
+              {filterType === "individual" && "Individual"}
+              {filterType === "equipe" && "Em Equipe"}
             </button>
           ))}
         </div>
 
-        {/* Projects grid */}
+        {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {isLoading
-            ? // Mostrar skeletons durante carregamento
-              Array.from({ length: filtered.length || 3 }).map((_, i) => (
-                <ProjectSkeleton key={`skeleton-${i}`} />
-              ))
-            : // Mostrar projetos com animação
-              filtered.map((project, i) => (
+          {projectsQuery.isLoading
+            ? Array.from({ length: 6 }).map((_, i) => (
                 <div
-                  key={project.id}
-                  className="project-card-enter flex flex-col rounded-xl overflow-hidden transition-all duration-300"
-                  style={{
-                    background: "var(--graphite)",
-                    border: project.featured
-                      ? "1px solid rgba(0, 212, 255, 0.3)"
-                      : "1px solid var(--charcoal-light)",
-                    boxShadow: project.featured
-                      ? "0 0 25px rgba(0, 212, 255, 0.07)"
-                      : "none",
-                    animationDelay: `${i * 100}ms`,
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor = "rgba(0,212,255,0.4)";
-                    (e.currentTarget as HTMLElement).style.transform = "translateY(-4px)";
-                    (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 30px rgba(0,0,0,0.4), 0 0 20px rgba(0,212,255,0.08)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor = project.featured ? "rgba(0, 212, 255, 0.3)" : "var(--charcoal-light)";
-                    (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-                    (e.currentTarget as HTMLElement).style.boxShadow = project.featured ? "0 0 25px rgba(0, 212, 255, 0.07)" : "none";
-                  }}
+                  key={i}
+                  className={`animate-fade-up delay-${Math.min((i + 1) * 100, 500)}`}
                 >
-                  {/* Card top accent */}
-                  <div
-                    className="h-0.5 w-full"
-                    style={{
-                      background: project.featured
-                        ? "linear-gradient(to right, var(--neon), transparent)"
-                        : "transparent",
-                    }}
-                  />
+                  <ProjectSkeleton />
+                </div>
+              ))
+            : visibleProjects.map((project, i) => {
+                const technologies = JSON.parse(project.technologies || "[]");
+                const isIndividual = project.type === "individual";
 
-                  <div className="p-6 flex flex-col flex-1">
-                    {/* Header */}
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="flex items-center gap-2">
-                        <div
-                          className="w-8 h-8 rounded-lg flex items-center justify-center"
-                          style={{
-                            background: "rgba(0,212,255,0.08)",
-                            border: "1px solid rgba(0,212,255,0.15)",
-                          }}
-                        >
-                          <Code2 size={14} style={{ color: "var(--neon)" }} />
-                        </div>
-                        <div className="flex items-center gap-1.5">
-                          {project.type === "individual" ? (
-                            <User size={11} style={{ color: "var(--gray-text)" }} />
+                return (
+                  <div
+                    key={project.id}
+                    className={`animate-fade-up delay-${Math.min((i + 1) * 100, 500)} flex flex-col rounded-xl overflow-hidden transition-all duration-300`}
+                    style={{
+                      background: "var(--graphite)",
+                      border: "1px solid var(--charcoal-light)",
+                    }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLElement).style.borderColor = "var(--neon)40";
+                      (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)";
+                      (e.currentTarget as HTMLElement).style.boxShadow =
+                        "0 8px 25px rgba(0,0,0,0.3), 0 0 15px rgba(0,212,255,0.1)";
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLElement).style.borderColor = "var(--charcoal-light)";
+                      (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+                      (e.currentTarget as HTMLElement).style.boxShadow = "none";
+                    }}
+                  >
+                    {/* Top accent */}
+                    <div
+                      className="h-0.5 w-full"
+                      style={{
+                        background: "linear-gradient(to right, var(--neon), transparent)",
+                      }}
+                    />
+
+                    <div className="p-6 flex flex-col flex-1">
+                      {/* Header */}
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center gap-2">
+                          {isIndividual ? (
+                            <User size={18} style={{ color: "var(--neon)" }} />
                           ) : (
-                            <Users size={11} style={{ color: "var(--gray-text)" }} />
+                            <Users size={18} style={{ color: "var(--neon)" }} />
                           )}
                           <span
-                            className="text-xs font-mono"
-                            style={{ color: "var(--gray-text)" }}
+                            className="text-xs font-semibold uppercase tracking-wider"
+                            style={{ color: "var(--neon)" }}
                           >
-                            {project.type === "individual" ? "Individual" : "Equipe"}
+                            {isIndividual ? "Individual" : "Em Equipe"}
                           </span>
                         </div>
+
                       </div>
-                      <div className="flex items-center gap-2">
-                        {project.featured && (
+
+                      {/* Title */}
+                      <h3 className="text-lg font-bold mb-3">{project.title}</h3>
+
+                      {/* Description */}
+                      <p
+                        className="text-sm mb-4 flex-1"
+                        style={{ color: "var(--gray-text)" }}
+                      >
+                        {project.description}
+                      </p>
+
+                      {/* Technologies */}
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {technologies.map((tech: string, idx: number) => (
                           <span
-                            className="text-xs font-mono px-2 py-0.5 rounded"
+                            key={idx}
+                            className="px-3 py-1 rounded-full text-xs font-medium"
                             style={{
-                              background: "rgba(0,212,255,0.08)",
+                              background: "var(--neon)15",
                               color: "var(--neon)",
-                              border: "1px solid rgba(0,212,255,0.2)",
                             }}
                           >
-                            ★
+                            {tech}
                           </span>
-                        )}
-                        <span
-                          className="text-xs font-mono"
-                          style={{ color: "var(--charcoal-light)" }}
-                        >
-                          {project.year}
-                        </span>
+                        ))}
                       </div>
-                    </div>
 
-                    {/* Title */}
-                    <h3
-                      className="font-bold text-lg mb-3 leading-tight"
-                      style={{ color: "oklch(0.93 0.005 240)" }}
-                    >
-                      {project.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p
-                      className="text-sm font-light leading-relaxed flex-1 mb-5"
-                      style={{ color: "var(--gray-text)" }}
-                    >
-                      {project.description}
-                    </p>
-
-                    {/* Tech tags */}
-                    <div className="flex gap-2 flex-wrap mb-5">
-                      {project.techs.map((tech) => (
-                        <span
-                          key={tech}
-                          className="text-xs font-mono px-2.5 py-1 rounded-full"
+                      {/* Buttons */}
+                      <div className="flex gap-2">
+                        <a
+                          href={project.link || "#"}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 flex items-center justify-center gap-2"
                           style={{
-                            background: "rgba(0,212,255,0.08)",
+                            background: "transparent",
+                            border: "1px solid var(--neon)",
                             color: "var(--neon)",
-                            border: "1px solid rgba(0,212,255,0.15)",
+                          }}
+                          onMouseEnter={(e) => {
+                            (e.currentTarget as HTMLElement).style.background = "var(--neon)15";
+                          }}
+                          onMouseLeave={(e) => {
+                            (e.currentTarget as HTMLElement).style.background = "transparent";
                           }}
                         >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Buttons */}
-                    <div className="flex gap-2">
-                      <a
-                        href={project.github}
-                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg border text-xs font-mono transition-all duration-200"
-                        style={{
-                          borderColor: "rgba(0,212,255,0.2)",
-                          color: "var(--neon)",
-                          background: "rgba(0,212,255,0.03)",
-                        }}
-                        onMouseEnter={(e) => {
-                          (e.currentTarget as HTMLElement).style.background = "rgba(0,212,255,0.08)";
-                          (e.currentTarget as HTMLElement).style.borderColor = "rgba(0,212,255,0.4)";
-                        }}
-                        onMouseLeave={(e) => {
-                          (e.currentTarget as HTMLElement).style.background = "rgba(0,212,255,0.03)";
-                          (e.currentTarget as HTMLElement).style.borderColor = "rgba(0,212,255,0.2)";
-                        }}
-                      >
-                        <Github size={12} />
-                        Código
-                      </a>
-                      <a
-                        href={project.demo}
-                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg border text-xs font-mono transition-all duration-200"
-                        style={{
-                          borderColor: "rgba(0,212,255,0.2)",
-                          color: "var(--neon)",
-                          background: "rgba(0,212,255,0.03)",
-                        }}
-                        onMouseEnter={(e) => {
-                          (e.currentTarget as HTMLElement).style.background = "rgba(0,212,255,0.08)";
-                          (e.currentTarget as HTMLElement).style.borderColor = "rgba(0,212,255,0.4)";
-                        }}
-                        onMouseLeave={(e) => {
-                          (e.currentTarget as HTMLElement).style.background = "rgba(0,212,255,0.03)";
-                          (e.currentTarget as HTMLElement).style.borderColor = "rgba(0,212,255,0.2)";
-                        }}
-                      >
-                        <ExternalLink size={12} />
-                        Demo
-                      </a>
+                          <Code2 size={14} />
+                          Código
+                        </a>
+                        <a
+                          href={project.link || "#"}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 flex items-center justify-center gap-2"
+                          style={{
+                            background: "var(--neon)",
+                            color: "#0A0A0A",
+                          }}
+                          onMouseEnter={(e) => {
+                            (e.currentTarget as HTMLElement).style.boxShadow =
+                              "0 0 20px var(--neon)40";
+                          }}
+                          onMouseLeave={(e) => {
+                            (e.currentTarget as HTMLElement).style.boxShadow = "none";
+                          }}
+                        >
+                          <ExternalLink size={14} />
+                          Demo
+                        </a>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
         </div>
+
+        {/* Load More Button */}
+        {hasMore && (
+          <div className="flex justify-center mt-12 animate-fade-up">
+            <button
+              onClick={handleLoadMore}
+              className="px-8 py-3 rounded-lg font-semibold text-sm transition-all duration-300 flex items-center gap-2"
+              style={{
+                background: "transparent",
+                border: "1.5px solid var(--neon)",
+                color: "var(--neon)",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.background = "var(--neon)20";
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 0 20px var(--neon)30";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.background = "transparent";
+                (e.currentTarget as HTMLElement).style.boxShadow = "none";
+              }}
+            >
+              Ver Mais Projetos
+              <svg
+                className="w-4 h-4 transition-transform duration-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                />
+              </svg>
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
