@@ -6,13 +6,20 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import Admin from "./pages/Admin";
+import AdminDashboard from "./pages/AdminDashboard";
+import AdminMessages from "./pages/AdminMessages";
+import AdminSettings from "./pages/AdminSettings";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
       <Route path={"/"} component={Home} />
-      <Route path={"/admin"} component={Admin} />
+      <Route path={"/admin"} component={AdminDashboard} />
+      <Route path={"/admin/projects"} component={Admin} />
+      <Route path={"/admin/certificates"} component={Admin} />
+      <Route path={"/admin/messages"} component={AdminMessages} />
+      <Route path={"/admin/settings"} component={AdminSettings} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>
