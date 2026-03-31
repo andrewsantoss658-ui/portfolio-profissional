@@ -2,7 +2,7 @@ import { z } from "zod";
 import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
-import { publicProcedure, router, protectedProcedure } from "./_core/trpc";
+import { publicProcedure, router, protectedProcedure, adminProcedure } from "./_core/trpc";
 import * as db from "./db";
 
 export const appRouter = router({
@@ -24,7 +24,7 @@ export const appRouter = router({
     projects: router({
       list: publicProcedure.query(() => db.getProjects()),
       byId: publicProcedure.input(z.number()).query(({ input }) => db.getProjectById(input)),
-      create: protectedProcedure
+      create: adminProcedure
         .input(z.object({
           title: z.string(),
           description: z.string(),
@@ -34,7 +34,7 @@ export const appRouter = router({
           type: z.enum(["individual", "team"]),
         }))
         .mutation(({ input }) => db.createProject(input)),
-      update: protectedProcedure
+      update: adminProcedure
         .input(z.object({
           id: z.number(),
           data: z.object({
@@ -47,7 +47,7 @@ export const appRouter = router({
           }),
         }))
         .mutation(({ input }) => db.updateProject(input.id, input.data)),
-      delete: protectedProcedure
+      delete: adminProcedure
         .input(z.number())
         .mutation(({ input }) => db.deleteProject(input)),
     }),
@@ -56,7 +56,7 @@ export const appRouter = router({
     certificates: router({
       list: publicProcedure.query(() => db.getCertificates()),
       byId: publicProcedure.input(z.number()).query(({ input }) => db.getCertificateById(input)),
-      create: protectedProcedure
+      create: adminProcedure
         .input(z.object({
           title: z.string(),
           issuer: z.string(),
@@ -65,7 +65,7 @@ export const appRouter = router({
           link: z.string().optional(),
         }))
         .mutation(({ input }) => db.createCertificate(input)),
-      update: protectedProcedure
+      update: adminProcedure
         .input(z.object({
           id: z.number(),
           data: z.object({
@@ -77,15 +77,15 @@ export const appRouter = router({
           }),
         }))
         .mutation(({ input }) => db.updateCertificate(input.id, input.data)),
-      delete: protectedProcedure
+      delete: adminProcedure
         .input(z.number())
         .mutation(({ input }) => db.deleteCertificate(input)),
     }),
 
     // Mensagens de Contato
     messages: router({
-      list: protectedProcedure.query(() => db.getContactMessages()),
-      unread: protectedProcedure.query(() => db.getUnreadMessages()),
+      list: adminProcedure.query(() => db.getContactMessages()),
+      unread: adminProcedure.query(() => db.getUnreadMessages()),
       create: publicProcedure
         .input(z.object({
           name: z.string(),
@@ -94,25 +94,25 @@ export const appRouter = router({
           message: z.string(),
         }))
         .mutation(({ input }) => db.createContactMessage(input)),
-      markAsRead: protectedProcedure
+      markAsRead: adminProcedure
         .input(z.number())
         .mutation(({ input }) => db.markMessageAsRead(input)),
-      delete: protectedProcedure
+      delete: adminProcedure
         .input(z.number())
         .mutation(({ input }) => db.deleteContactMessage(input)),
     }),
 
     // Configurações do Portfólio
     settings: router({
-      get: protectedProcedure.query(({ ctx }) => db.getPortfolioSettings(ctx.user.id)),
-      create: protectedProcedure
+      get: adminProcedure.query(({ ctx }) => db.getPortfolioSettings(ctx.user.id)),
+      create: adminProcedure
         .input(z.object({
           profileImageUrl: z.string().optional(),
           bio: z.string().optional(),
           location: z.string().optional(),
         }))
         .mutation(({ ctx, input }) => db.createPortfolioSettings({ userId: ctx.user.id, ...input })),
-      update: protectedProcedure
+      update: adminProcedure
         .input(z.object({
           profileImageUrl: z.string().optional(),
           bio: z.string().optional(),

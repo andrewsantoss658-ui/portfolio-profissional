@@ -146,7 +146,7 @@ export default function CertificatesSection() {
   // Query para carregar certificados do banco
   const certificatesQuery = trpc.portfolio.certificates.list.useQuery();
   const isLoading = certificatesQuery.isLoading;
-  const certificates = certificatesQuery.data || certificatesData;
+  const certificates = (certificatesQuery.data && certificatesQuery.data.length > 0) ? certificatesQuery.data : certificatesData;
 
   const handleLoadMore = () => {
     setVisibleCount((prev) => prev + itemsPerPage);

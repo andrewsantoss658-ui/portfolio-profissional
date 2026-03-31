@@ -219,7 +219,17 @@ export default function ProjectsSection() {
                 </div>
               ))
             : visibleProjects.map((project, i) => {
-                const technologies = JSON.parse(project.technologies || "[]");
+                let technologies: string[] = [];
+                try {
+                  // Try to parse as JSON first
+                  technologies = JSON.parse(project.technologies || "[]");
+                } catch (e) {
+                  // Fallback: treat as CSV
+                  technologies = (project.technologies || "")
+                    .split(",")
+                    .map((t) => t.trim())
+                    .filter(Boolean);
+                }
                 const isIndividual = project.type === "individual";
 
                 return (
