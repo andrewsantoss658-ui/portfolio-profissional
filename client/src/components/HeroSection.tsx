@@ -10,7 +10,7 @@ const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663397639934/VuzrUV
 
 const phrases = [
   "Análise de Dados",
-  "Entusiasta de Tecnologia",
+  "Banco de Dados",
   "Solucionador de Problemas",
   "Estudante em Desenvolvimento",
 ];
