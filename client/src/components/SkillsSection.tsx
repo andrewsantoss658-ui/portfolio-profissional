@@ -9,14 +9,14 @@ import SectionHeader from "./SectionHeader";
 const SKILLS_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663397639934/VuzrUVVs5i96bHktR5Gwxp/skills-accent-hjBSSHjEt2agp2bUgb6m2v.webp";
 
 const hardSkills = [
-  { name: "Python", level: 75, color: "#3776AB" },
-  { name: "HTML / CSS / Tailwind", level: 65, color: "#E34F26" },
-  { name: "JavaScript / TypeScript", level: 60, color: "#F7DF1E" },
-  { name: "Git / GitHub", level: 60, color: "#F05032" },
-  { name: "Node.js / Express", level: 60, color: "#339933" },
-  { name: "React / Next.js", level: 55, color: "#61DAFB" },
-  { name: "SQL / PostgreSQL", level: 55, color: "#336791" },
-  { name: "Docker", level: 20, color: "#2496ED" },
+  { name: "Python", level: Intermediário, color: "#3776AB" },
+  { name: "HTML / CSS / Tailwind", level: Intermediário, color: "#E34F26" },
+  { name: "JavaScript / TypeScript", level: Intermediário, color: "#F7DF1E" },
+  { name: "Git / GitHub", level: Intermediário, color: "#F05032" },
+  { name: "Node.js / Express", level: Iniciante/ Intermediário, color: "#339933" },
+  { name: "React / Next.js", level: Iniciante/ Intermediário, color: "#61DAFB" },
+  { name: "SQL / PostgreSQL", level: Iniciante/ Intermediário, color: "#336791" },
+  { name: "Docker", level: Iniciante, color: "#2496ED" },
 ];
 
 const softSkills = [
