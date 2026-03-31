@@ -2,6 +2,7 @@
    CertificatesSection — "Precision Dark — Editorial Tech"
    Design: Cards de certificados com ícone de categoria, meta info e botão visualizar
    ============================================================ */
+import { useState, useEffect } from "react";
 import { Award, Building2, CheckCircle2 } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 
@@ -57,7 +58,83 @@ const certificates = [
 
 ];
 
+// Skeleton Loading Component
+function CertificateSkeleton() {
+  return (
+    <div
+      className="rounded-xl overflow-hidden flex flex-col"
+      style={{
+        background: "var(--graphite)",
+        border: "1px solid var(--charcoal-light)",
+      }}
+    >
+      {/* Top color accent skeleton */}
+      <div
+        className="h-0.5 w-full"
+        style={{
+          background: "linear-gradient(to right, var(--charcoal-light), transparent)",
+        }}
+      />
+
+      <div className="p-5 flex flex-col flex-1">
+        {/* Header skeleton */}
+        <div className="flex items-start justify-between mb-4">
+          <div
+            className="w-10 h-10 rounded-lg flex-shrink-0 animate-pulse"
+            style={{
+              background: "var(--charcoal-light)",
+            }}
+          />
+          <div
+            className="h-6 w-24 rounded animate-pulse"
+            style={{
+              background: "var(--charcoal-light)",
+            }}
+          />
+        </div>
+
+        {/* Name skeleton */}
+        <div className="space-y-2 mb-4">
+          <div
+            className="h-4 w-full rounded animate-pulse"
+            style={{
+              background: "var(--charcoal-light)",
+            }}
+          />
+          <div
+            className="h-4 w-3/4 rounded animate-pulse"
+            style={{
+              background: "var(--charcoal-light)",
+            }}
+          />
+        </div>
+
+        {/* Meta skeleton */}
+        <div className="space-y-2">
+          <div
+            className="h-3 w-1/2 rounded animate-pulse"
+            style={{
+              background: "var(--charcoal-light)",
+            }}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function CertificatesSection() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Simula carregamento dos certificados
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1200);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section
       id="certificados"
@@ -90,110 +167,158 @@ export default function CertificatesSection() {
             border: "1px solid var(--charcoal-light)",
           }}
         >
-          {[
-            { value: `${certificates.length}`, label: "Certificados" },
-            { value: `${new Set(certificates.map(c => c.institution)).size}`, label: "Instituições" },
-          ].map((stat) => (
-            <div key={stat.label} className="flex items-center gap-3">
-              <CheckCircle2 size={16} style={{ color: "var(--neon)" }} />
-              <div>
-                <span
-                  className="font-black text-lg"
-                  style={{ color: "var(--neon)" }}
-                >
-                  {stat.value}
-                </span>
-                <span
-                  className="text-xs ml-2"
-                  style={{ color: "var(--gray-text)" }}
-                >
-                  {stat.label}
-                </span>
+          {isLoading ? (
+            <>
+              <div className="flex items-center gap-3">
+                <div
+                  className="w-4 h-4 rounded-full animate-pulse"
+                  style={{ background: "var(--charcoal-light)" }}
+                />
+                <div>
+                  <div
+                    className="h-5 w-8 rounded animate-pulse mb-1"
+                    style={{ background: "var(--charcoal-light)" }}
+                  />
+                  <div
+                    className="h-3 w-20 rounded animate-pulse"
+                    style={{ background: "var(--charcoal-light)" }}
+                  />
+                </div>
               </div>
-            </div>
-          ))}
+              <div className="flex items-center gap-3">
+                <div
+                  className="w-4 h-4 rounded-full animate-pulse"
+                  style={{ background: "var(--charcoal-light)" }}
+                />
+                <div>
+                  <div
+                    className="h-5 w-6 rounded animate-pulse mb-1"
+                    style={{ background: "var(--charcoal-light)" }}
+                  />
+                  <div
+                    className="h-3 w-20 rounded animate-pulse"
+                    style={{ background: "var(--charcoal-light)" }}
+                  />
+                </div>
+              </div>
+            </>
+          ) : (
+            [
+              { value: `${certificates.length}`, label: "Certificados" },
+              { value: `${new Set(certificates.map(c => c.institution)).size}`, label: "Instituições" },
+            ].map((stat) => (
+              <div key={stat.label} className="flex items-center gap-3">
+                <CheckCircle2 size={16} style={{ color: "var(--neon)" }} />
+                <div>
+                  <span
+                    className="font-black text-lg"
+                    style={{ color: "var(--neon)" }}
+                  >
+                    {stat.value}
+                  </span>
+                  <span
+                    className="text-xs ml-2"
+                    style={{ color: "var(--gray-text)" }}
+                  >
+                    {stat.label}
+                  </span>
+                </div>
+              </div>
+            ))
+          )}
         </div>
 
+        {/* Certificates Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {certificates.map((cert, i) => (
-            <div
-              key={cert.id}
-              className={`animate-fade-up delay-${Math.min((i + 1) * 100, 500)} flex flex-col rounded-xl overflow-hidden transition-all duration-300`}
-              style={{
-                background: "var(--graphite)",
-                border: "1px solid var(--charcoal-light)",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = `${cert.categoryColor}40`;
-                (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)";
-                (e.currentTarget as HTMLElement).style.boxShadow = `0 8px 25px rgba(0,0,0,0.3), 0 0 15px ${cert.categoryColor}10`;
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = "var(--charcoal-light)";
-                (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-                (e.currentTarget as HTMLElement).style.boxShadow = "none";
-              }}
-            >
-              {/* Top color accent */}
+          {isLoading ? (
+            // Skeleton loading
+            Array.from({ length: 6 }).map((_, i) => (
               <div
-                className="h-0.5 w-full"
+                key={i}
+                className={`animate-fade-up delay-${Math.min((i + 1) * 100, 500)}`}
+              >
+                <CertificateSkeleton />
+              </div>
+            ))
+          ) : (
+            // Actual certificates
+            certificates.map((cert, i) => (
+              <div
+                key={cert.id}
+                className={`animate-fade-up delay-${Math.min((i + 1) * 100, 500)} flex flex-col rounded-xl overflow-hidden transition-all duration-300`}
                 style={{
-                  background: `linear-gradient(to right, ${cert.categoryColor}, transparent)`,
+                  background: "var(--graphite)",
+                  border: "1px solid var(--charcoal-light)",
                 }}
-              />
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.borderColor = `${cert.categoryColor}40`;
+                  (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)";
+                  (e.currentTarget as HTMLElement).style.boxShadow = `0 8px 25px rgba(0,0,0,0.3), 0 0 15px ${cert.categoryColor}10`;
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.borderColor = "var(--charcoal-light)";
+                  (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+                  (e.currentTarget as HTMLElement).style.boxShadow = "none";
+                }}
+              >
+                {/* Top color accent */}
+                <div
+                  className="h-0.5 w-full"
+                  style={{
+                    background: `linear-gradient(to right, ${cert.categoryColor}, transparent)`,
+                  }}
+                />
 
-              <div className="p-5 flex flex-col flex-1">
-                {/* Header */}
-                <div className="flex items-start justify-between mb-4">
-                  <div
-                    className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
-                    style={{
-                      background: `${cert.categoryColor}12`,
-                      border: `1px solid ${cert.categoryColor}25`,
-                    }}
-                  >
-                    <Award size={17} style={{ color: cert.categoryColor }} />
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span
-                      className="text-xs font-mono px-2 py-0.5 rounded"
+                <div className="p-5 flex flex-col flex-1">
+                  {/* Header */}
+                  <div className="flex items-start justify-between mb-4">
+                    <div
+                      className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
                       style={{
-                        background: `${cert.categoryColor}10`,
-                        color: cert.categoryColor,
-                        border: `1px solid ${cert.categoryColor}20`,
+                        background: `${cert.categoryColor}12`,
+                        border: `1px solid ${cert.categoryColor}25`,
                       }}
                     >
-                      {cert.category}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Name */}
-                <h3
-                  className="font-semibold text-sm mb-4 leading-snug flex-1"
-                  style={{ color: "oklch(0.93 0.005 240)" }}
-                >
-                  {cert.name}
-                </h3>
-
-                {/* Meta */}
-                <div className="space-y-2 mb-4">
-                  <div className="flex items-center gap-2">
-                    <Building2 size={11} style={{ color: "var(--gray-text)" }} />
-                    <span
-                      className="text-xs font-medium"
-                      style={{ color: "var(--gray-text)" }}
-                    >
-                      {cert.institution}
-                    </span>
+                      <Award size={17} style={{ color: cert.categoryColor }} />
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span
+                        className="text-xs font-mono px-2 py-0.5 rounded"
+                        style={{
+                          background: `${cert.categoryColor}10`,
+                          color: cert.categoryColor,
+                          border: `1px solid ${cert.categoryColor}20`,
+                        }}
+                      >
+                        {cert.category}
+                      </span>
+                    </div>
                   </div>
 
+                  {/* Name */}
+                  <h3
+                    className="font-semibold text-sm mb-4 leading-snug flex-1"
+                    style={{ color: "oklch(0.93 0.005 240)" }}
+                  >
+                    {cert.name}
+                  </h3>
+
+                  {/* Meta */}
+                  <div className="space-y-2 mb-4">
+                    <div className="flex items-center gap-2">
+                      <Building2 size={11} style={{ color: "var(--gray-text)" }} />
+                      <span
+                        className="text-xs font-medium"
+                        style={{ color: "var(--gray-text)" }}
+                      >
+                        {cert.institution}
+                      </span>
+                    </div>
+                  </div>
                 </div>
-
-
               </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </div>
     </section>
