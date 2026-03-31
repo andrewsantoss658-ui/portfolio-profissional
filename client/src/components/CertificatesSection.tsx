@@ -8,42 +8,42 @@ import SectionHeader from "./SectionHeader";
 
 const certificates = [
   {
-    id: 4,
+    id: 1,
     name: "Python para Data Science",
     institution: "DIO",
     category: "Data Science",
     categoryColor: "#F59E0B",
   },
   {
-    id: 5,
+    id: 2,
     name: "Introdução à Análise de Dados",
     institution: "Fundação Bradesco",
     category: "Database",
     categoryColor: "#EF4444",
   },
   {
-    id: 6,
+    id: 3,
     name: "Introdução à Lei Geral para Proteção de Dados",
     institution: "Academia Protegon",
     category: "Gestão de Privacidade e Proteção de Dados",
     categoryColor: "#EF4444",
   },
   {
-    id: 7,
+    id: 4,
     name: "Fundamentos de Lógica de Programação",
     institution: "Fundação Bradesco",
     category: "Programação",
     categoryColor: "#8B5CF6",
   },
   {
-    id: 9,
+    id: 5,
     name: "Análise de textos",
     institution: "Unifacs",
     category: "Letras",
     categoryColor: "#8B5CF6",
   },
   {
-    id: 8,
+    id: 6,
     name: "Montagem e Manutenção de Computadores",
     institution: "Prepara Cursos",
     category: "Manutenção de Micro",
