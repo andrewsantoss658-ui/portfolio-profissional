@@ -9,14 +9,14 @@ import SectionHeader from "./SectionHeader";
 const SKILLS_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663397639934/VuzrUVVs5i96bHktR5Gwxp/skills-accent-hjBSSHjEt2agp2bUgb6m2v.webp";
 
 const hardSkills = [
-  { name: "Python", level: 75, color: "#3776AB" },
-  { name: "HTML / CSS / Tailwind", level: 65, color: "#E34F26" },
-  { name: "JavaScript / TypeScript", level: 60, color: "#F7DF1E" },
-  { name: "Git / GitHub", level: 60, color: "#F05032" },
-  { name: "Node.js / Express", level: 60, color: "#339933" },
-  { name: "React / Next.js", level: 55, color: "#61DAFB" },
-  { name: "SQL / PostgreSQL", level: 55, color: "#336791" },
-  { name: "Docker", level: 20, color: "#2496ED" },
+  { name: "Python", classe: "Intermediário / Avançado", level: 75, color: "#3776AB" },
+  { name: "HTML / CSS / Tailwind", classe: "Intermediário", level: 65, color: "#E34F26" },
+  { name: "JavaScript / TypeScript", classe: "Intermediário", level: 60, color: "#F7DF1E" },
+  { name: "Git / GitHub", classe: "Intermediário", level: 60, color: "#F05032" },
+  { name: "Node.js / Express", classe: "Intermediário", level: 60, color: "#339933" },
+  { name: "React / Next.js", classe: "Iniciante / Intermediário", level: 55, color: "#61DAFB" },
+  { name: "SQL / PostgreSQL", classe: "Iniciante / Intermediário", level: 55, color: "#336791" },
+  { name: "Docker", classe: "Iniciante", level: 20, color: "#2496ED" },
 ];
 
 const softSkills = [
@@ -28,7 +28,7 @@ const softSkills = [
   { name: "Proatividade", icon: "🚀", desc: "Iniciativa, antecipação de necessidades e entrega de valor" },
 ];
 
-function SkillBar({ name, level, color }: { name: string; level: number; color: string }) {
+function SkillBar({ name, classe, level, color }: { name: string; classe: string; level: number; color: string }) {
   const [animated, setAnimated] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -59,7 +59,7 @@ function SkillBar({ name, level, color }: { name: string; level: number; color: 
           className="text-xs font-mono font-semibold"
           style={{ color: "var(--neon)" }}
         >
-          {level}%
+          {classe}
         </span>
       </div>
       <div
@@ -123,6 +123,7 @@ export default function SkillsSection() {
                 <SkillBar
                   key={skill.name}
                   name={skill.name}
+                  classe={(skill as any).classe}
                   level={skill.level}
                   color={skill.color}
                 />
