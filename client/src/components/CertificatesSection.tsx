@@ -21,7 +21,7 @@ const certificatesData = [
     name: "Python para Data Science",
     institution: "Dio.me",
     category: "Data Science",
-    categoryColor: "#F59E0B",
+    categoryColor: "#FF00FF",
     url: "#",
   },
   {
@@ -29,7 +29,7 @@ const certificatesData = [
     name: "Introdução à Análise de Dados",
     institution: "Fundação Bradesco",
     category: "Database",
-    categoryColor: "#EF4444",
+    categoryColor: "#00FF00",
     url: "https://lms.ev.org.br/mpls/Web/Lms/Student/PrintCertificateDownload.ashx?uid=4279394&p=5s6BRVyVBergSQBZ%252bpzMLiwxf61bYMDt",
   },
   {
@@ -37,7 +37,7 @@ const certificatesData = [
     name: "Introdução à Lei Geral para Proteção de Dados",
     institution: "Academia Protegon",
     category: "Gestão de Privacidade e Proteção de Dados",
-    categoryColor: "#EF4444",
+    categoryColor: "#FF6600",
     url: "#",
   },
   {
@@ -45,7 +45,7 @@ const certificatesData = [
     name: "Fundamentos de Lógica de Programação",
     institution: "Fundação Bradesco",
     category: "Programação",
-    categoryColor: "#8B5CF6",
+    categoryColor: "#9D4EDD",
     url: "https://lms.ev.org.br/mpls/Web/Lms/Student/PrintCertificateDownload.ashx?uid=4279394&p=5s6BRVyVBeqe4mF23CyY10SESrLbldgm",
   },
   {
@@ -53,7 +53,7 @@ const certificatesData = [
     name: "Análise de textos",
     institution: "Unifacs",
     category: "Letras",
-    categoryColor: "#8B5CF6",
+    categoryColor: "#FF1493",
     url: "#",
   },
   {
@@ -61,7 +61,7 @@ const certificatesData = [
     name: "Montagem e Manutenção de Computadores",
     institution: "Prepara Cursos",
     category: "Manutenção de Micro",
-    categoryColor: "#8B5CF6",
+    categoryColor: "#FFFF00",
     url: "#",
   },
   {
@@ -69,7 +69,7 @@ const certificatesData = [
     name: "Formatação em CFTV",
     institution: "Prepara Cursos",
     category: "Manutenção de CFTV",
-    categoryColor: "#8B5CF6",
+    categoryColor: "#FFFF00",
     url: "#",
   },
 ];
