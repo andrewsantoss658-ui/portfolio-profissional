@@ -59,7 +59,7 @@ export default function AboutSection() {
                 className="text-sm leading-relaxed"
                 style={{ color: "var(--gray-text)" }}
               >
-                Sou estudante de Análise e Desenvolvimento de Sistemas com uma paixão clara: extrair valor através dos dados. Durante minha formação, venho aprofundando conhecimentos em modelagem de dados, consultas SQL complexas e estruturação de sistemas.
+                Sou estudante de Análise e Desenvolvimento de Sistemas com foco estratégico em extrair valor através dos dados. Durante minha formação, venho aprofundando conhecimentos em modelagem de dados, consultas SQL complexas e estruturação de sistemas.
 
               </p>
               <p
