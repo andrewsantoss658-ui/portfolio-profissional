@@ -9,45 +9,67 @@ import SectionHeader from "./SectionHeader";
 const certificates = [
   {
     id: 1,
-    name: "Python para Data Science",
-    institution: "DIO",
-    category: "Data Science",
-    categoryColor: "#F59E0B",
+    name: "Back-end com Python",
+    institution: "Dio.me",
+    category: "Desenvolvimento",
+    categoryColor: "#00D4FF",
+    url: "#",
   },
   {
     id: 2,
+    name: "Python para Data Science",
+    institution: "Dio.me",
+    category: "Data Science",
+    categoryColor: "#F59E0B",
+    url: "#",
+  },
+  {
+    id: 3,
     name: "Introdução à Análise de Dados",
     institution: "Fundação Bradesco",
     category: "Database",
     categoryColor: "#EF4444",
+    url: "https://lms.ev.org.br/mpls/Web/Lms/Student/PrintCertificateDownload.ashx?uid=4279394&p=5s6BRVyVBergSQBZ%252bpzMLiwxf61bYMDt",
   },
   {
-    id: 3,
+    id: 4,
     name: "Introdução à Lei Geral para Proteção de Dados",
     institution: "Academia Protegon",
     category: "Gestão de Privacidade e Proteção de Dados",
     categoryColor: "#EF4444",
+    url: "#",
   },
   {
-    id: 4,
+    id: 5,
     name: "Fundamentos de Lógica de Programação",
     institution: "Fundação Bradesco",
     category: "Programação",
     categoryColor: "#8B5CF6",
+    url: "https://lms.ev.org.br/mpls/Web/Lms/Student/PrintCertificateDownload.ashx?uid=4279394&p=5s6BRVyVBeqe4mF23CyY10SESrLbldgm",
   },
   {
-    id: 5,
+    id: 6,
     name: "Análise de textos",
     institution: "Unifacs",
     category: "Letras",
     categoryColor: "#8B5CF6",
+    url: "#",
   },
   {
-    id: 6,
+    id: 7,
     name: "Montagem e Manutenção de Computadores",
     institution: "Prepara Cursos",
     category: "Manutenção de Micro",
     categoryColor: "#8B5CF6",
+    url: "#",
+  },
+  {
+    id: 8,
+    name: "Formatação em CFTV",
+    institution: "Prepara Cursos",
+    category: "Manutenção de CFTV",
+    categoryColor: "#8B5CF6",
+    url: "#",
   },
 ];
 
@@ -233,7 +255,7 @@ export default function CertificatesSection() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {isLoading ? (
             // Skeleton loading
-            Array.from({ length: 6 }).map((_, i) => (
+            Array.from({ length: 8 }).map((_, i) => (
               <div
                 key={i}
                 className={`animate-fade-up delay-${Math.min((i + 1) * 100, 500)}`}
