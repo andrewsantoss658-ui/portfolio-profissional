@@ -306,49 +306,7 @@ export default function ProjectsSection() {
                         ))}
                       </div>
 
-                      {/* Buttons */}
-                      <div className="flex gap-2">
-                        <a
-                          href={project.link || "#"}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex-1 px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 flex items-center justify-center gap-2"
-                          style={{
-                            background: "transparent",
-                            border: "1px solid var(--neon)",
-                            color: "var(--neon)",
-                          }}
-                          onMouseEnter={(e) => {
-                            (e.currentTarget as HTMLElement).style.background = "var(--neon)15";
-                          }}
-                          onMouseLeave={(e) => {
-                            (e.currentTarget as HTMLElement).style.background = "transparent";
-                          }}
-                        >
-                          <Code2 size={14} />
-                          Código
-                        </a>
-                        <a
-                          href={project.link || "#"}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex-1 px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 flex items-center justify-center gap-2"
-                          style={{
-                            background: "var(--neon)",
-                            color: "#0A0A0A",
-                          }}
-                          onMouseEnter={(e) => {
-                            (e.currentTarget as HTMLElement).style.boxShadow =
-                              "0 0 20px var(--neon)40";
-                          }}
-                          onMouseLeave={(e) => {
-                            (e.currentTarget as HTMLElement).style.boxShadow = "none";
-                          }}
-                        >
-                          <ExternalLink size={14} />
-                          Demo
-                        </a>
-                      </div>
+                      {/* Buttons - Removed */}
                     </div>
                   </div>
                 );
