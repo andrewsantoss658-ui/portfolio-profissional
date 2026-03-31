@@ -118,6 +118,8 @@ function CertificateSkeleton() {
 
 export default function CertificatesSection() {
   const [isLoading, setIsLoading] = useState(true);
+  const [visibleCount, setVisibleCount] = useState(6);
+  const itemsPerPage = 3;
 
   // Simula carregamento dos certificados
   useEffect(() => {
@@ -127,6 +129,12 @@ export default function CertificatesSection() {
 
     return () => clearTimeout(timer);
   }, []);
+
+  const handleLoadMore = () => {
+    setVisibleCount((prev) => prev + itemsPerPage);
+  };
+
+  const hasMore = visibleCount < certificates.length;
 
   return (
     <section
@@ -235,7 +243,7 @@ export default function CertificatesSection() {
             ))
           ) : (
             // Actual certificates
-            certificates.map((cert, i) => (
+            certificates.slice(0, visibleCount).map((cert, i) => (
               <div
                 key={cert.id}
                 className={`animate-fade-up delay-${Math.min((i + 1) * 100, 500)} flex flex-col rounded-xl overflow-hidden transition-all duration-300`}
@@ -313,6 +321,44 @@ export default function CertificatesSection() {
             ))
           )}
         </div>
+
+        {/* Load More Button */}
+        {hasMore && (
+          <div className="flex justify-center mt-12 animate-fade-up">
+            <button
+              onClick={handleLoadMore}
+              className="px-8 py-3 rounded-lg font-semibold text-sm transition-all duration-300 flex items-center gap-2"
+              style={{
+                background: "transparent",
+                border: "1.5px solid var(--neon)",
+                color: "var(--neon)",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.background = "var(--neon)20";
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 0 20px var(--neon)30";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.background = "transparent";
+                (e.currentTarget as HTMLElement).style.boxShadow = "none";
+              }}
+            >
+              Ver Mais Certificados
+              <svg
+                className="w-4 h-4 transition-transform duration-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                />
+              </svg>
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
