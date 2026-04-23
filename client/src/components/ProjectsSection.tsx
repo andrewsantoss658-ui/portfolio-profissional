@@ -306,7 +306,29 @@ export default function ProjectsSection() {
                         ))}
                       </div>
 
-                      {/* Buttons - Removed */}
+                      {/* GitHub Link Button */}
+                      {project.link && project.link !== "#" && (
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300"
+                          style={{
+                            background: "transparent",
+                            border: "1px solid var(--neon)",
+                            color: "var(--neon)",
+                          }}
+                          onMouseEnter={(e) => {
+                            (e.currentTarget as HTMLElement).style.background = "var(--neon)15";
+                          }}
+                          onMouseLeave={(e) => {
+                            (e.currentTarget as HTMLElement).style.background = "transparent";
+                          }}
+                        >
+                          <Github size={14} />
+                          Ver no GitHub
+                        </a>
+                      )}
                     </div>
                   </div>
                 );
