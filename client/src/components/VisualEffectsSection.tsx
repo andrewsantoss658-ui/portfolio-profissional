@@ -49,7 +49,7 @@ export default function VisualEffectsSection() {
         {/* Contadores */}
         <div className="grid md:grid-cols-2 gap-6 mb-16 animate-fade-up delay-100">
           {[
-            { label: "Projetos em andamento", value: 2, suffix: "" },
+            { label: "Projetos em andamento", value: 3, suffix: "" },
             { label: "Previsão de formação: Dezembro de 2027", value: 100, suffix: "%" },
           ].map((item) => (
             <div
